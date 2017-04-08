@@ -21,6 +21,10 @@ app.set('port', port);
 
 var server = http.createServer(app);
 var io = require('socket.io')(server)
+ioFunction()
+
+
+
 /**
  * Listen on provided port, on all network interfaces.
  */
@@ -88,3 +92,28 @@ function onListening() {
     'port ' + addr.port;
   debug('Listening on ' + bind);
 }
+
+function ioFunction() {
+  let sessionObject = {
+    happy: [],
+    ya: [],
+    meh: [],
+    confused: [],
+    angry: []
+  }
+
+  io.on('connection', function(socket) {
+    console.log("someone entered");
+
+    socket.on('disconnect', () => {
+      console.log("user disconnected");
+    })
+
+    socket.on('mood', data => {
+      sessionObject[data].push('student')
+      io.emit('session object', sessionObject)
+    })
+  });
+}
+
+module.exports = server

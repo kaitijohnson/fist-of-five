@@ -1,16 +1,26 @@
 <!DOCTYPE html>
 <html>
-  <head>
+
+<head>
     <meta charset="utf-8">
     <title>THIS IS SOCKET</title>
-  </head>
-  <body>
-    <ul id="messages">
 
+    <!-- socket.io jquery js stuff -->
+    <script src="https://cdn.socket.io/socket.io-1.2.0.js"></script>
+    <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+    <script src="/javascripts/chat.js"></script>
+</head>
+
+<body>
+    <ul id="messages">
     </ul>
-    <form method="post">
-      <input type="text" id="m">
-      <button>Send</button>
+    <form>
+        <button class="rating" data-value="happy">Happy</button>
+        <button class="rating" data-value="ya">Ya</button>
+        <button class="rating" data-value="meh">Meh</button>
+        <button class="rating" data-value="confused">Confused</button>
+        <button class="rating" data-value="angry">Angry</button>
     </form>
-  </body>
+</body>
+
 </html>
