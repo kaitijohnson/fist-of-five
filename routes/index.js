@@ -10,6 +10,10 @@ router.get('/signup', function(req, res, next) {
   res.render('index', { title: 'The Signup Page' });
 });
 
+router.get('/login', function(req, res, next) {
+  res.render('index', { title: 'The Login Page' });
+});
+
 router.get('/dashboard/:id', function(req, res, next) {
   res.render('index', { title: 'This is an individual user\'s dashboard' });
 });
