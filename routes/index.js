@@ -3,24 +3,24 @@ var router = express.Router();
 
 /* Routes Boilerplate. */
 router.get('/', function(req, res, next) {
-  res.render('index', { title: 'Fist to Five Splashpage' });
+  res.render('index', { title: 'Fist of Five Splashpage' });
 });
 
 router.get('/signup', function(req, res, next) {
-  res.render('index', { title: 'The Signup Page' });
+  res.render('signup', { title: 'The Signup Page' });
 });
 
 router.get('/login', function(req, res, next) {
-  res.render('index', { title: 'The Login Page' });
+  res.render('login', { title: 'The Login Page' });
 });
 
 router.get('/dashboard/:id', function(req, res, next) {
-  res.render('index', { title: 'This is an individual user\'s dashboard' });
+  res.render('index', { title: 'The individual user\'s dashboard' });
 });
 
 /* session route will be re-written after socket is configured*/
 router.get('/session/:id', function(req, res, next) {
-  res.render('index', { title: 'This is a class session' });
+  res.render('index', { title: 'A class session' });
 });
 
 module.exports = router;
