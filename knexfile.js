@@ -1,7 +1,8 @@
 module.exports = {
-  development: {
+  test: {
     client: 'pg',
-    connection: 'postgres://localhost/foftest_db'
+    connection: 'postgres://localhost/foftest_db',
+    debug:true
   },
   development: {
     client: 'pg',
