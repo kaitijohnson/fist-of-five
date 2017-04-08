@@ -95,11 +95,26 @@ function onListening() {
 
 function ioFunction() {
   let sessionObject = {
-    happy: [],
-    ya: [],
-    meh: [],
-    confused: [],
-    angry: []
+    happy: {
+      value: 5,
+      students: []
+    },
+    ya: {
+      value: 4,
+      students: []
+    },
+    meh: {
+      value: 3,
+      students: []
+    },
+    confused: {
+      value: 2,
+      students: []
+    },
+    angry: {
+      value: 1,
+      students: []
+    }
   }
 
   io.on('connection', function(socket) {
@@ -110,7 +125,7 @@ function ioFunction() {
     })
 
     socket.on('mood', data => {
-      sessionObject[data].push('student')
+      sessionObject[data].students.push('student')
       io.emit('session object', sessionObject)
     })
   });
