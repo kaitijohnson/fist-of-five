@@ -5,7 +5,9 @@ exports.up = function(knex, Promise) {
       table.integer('user_id')
         .references('users.id')
         .notNullable()
-
+      table.integer('class_id')
+        .references('classes.id')
+        .notNullable()
     })
   ])
 

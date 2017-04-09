@@ -13,6 +13,15 @@ router.get('/:id', verifyToken, getClasses, function(req, res, next) {
   });
 });
 
+router.post('/:id', verifyClassName, function(req,res,next){
+  console.log("ClassName",req.body.className);
+  insertClass(req.body.className)
+    .then((data) =>{
+      console.log(data);
+      res.render('dashboard');
+    })
+})
+
 function getClasses(req, res, next) {
   getUserClasses(req.params.id)
     .then(data => {
@@ -35,5 +44,15 @@ function verifyToken(req, res, next) {
   });
 }
 
+function verifyClassName(req,res,next){
+  if(!req.body.className|| !req.body.className.trim()){
+    next(boom.create(400, "no class name provided"));
+  }
+  else{
+    next();
+  }
+}
+const addtoUsersClasses = (instructorID,classID)
+const insertClass = (className) => knex('classes').returning('*').insert( { 'name': className } );
 const getUserClasses = (id) => knex('users').where('id', id)
 module.exports = router;
