@@ -30,12 +30,12 @@ body {
   margin-top: 0;
 }
 
-.nav {
-  background-color: orange-darken-4;
+.navbar-fixed {
+  background-color: #e65100 !important;
 }
 
 .nav-wrapper {
-  background-color: orange-darken-4;
+  background-color: #e65100 !important;
 }
 
 .container{
