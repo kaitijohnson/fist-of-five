@@ -8,16 +8,15 @@ const jwt = require('jsonwebtoken');
 
 /* Routes Boilerplate. */
 router.get('/', function(req, res, next) {
-  res.render('index', {
+  res.render('splash', { title: 'The Splash Page' });
+});
+
+/* session route will be re-written after socket is configured*/
+router.get('/classroom/:id', function(req, res, next) {
+  res.render('sockettest', {
     title: 'Express'
   });
 });
 
-/* session route will be re-written after socket is configured*/
-router.get('/session/:id', function(req, res, next) {
-  res.render('index', {
-    title: 'A class session'
-  });
-});
 
 module.exports = router;

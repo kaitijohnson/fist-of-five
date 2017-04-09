@@ -58,11 +58,11 @@ div {
 }
 
 .navbar-fixed {
-    background-color: #e65100;
+    background-color: rgba(230, 81, 0, 0.5);
 }
 
 .nav-wrapper {
-    background-color: #e65100;
+    background-color: rgba(230, 81, 0, 0.5);
 }
 
 .vertical-center {
@@ -72,6 +72,11 @@ div {
 .headline {
     font-family: 'Architects Daughter' !important;
     font-size: 75px;
+}
+
+.card-btn {
+  font-size: 30px;
+  radius: 50px;
 }
 
 .classroom {
