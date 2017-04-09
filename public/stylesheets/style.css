@@ -74,9 +74,18 @@ div {
     font-size: 75px;
 }
 
+.headline2 {
+    font-family: 'Architects Daughter' !important;
+    font-size: 30px;
+}
+
 .card-btn {
   font-size: 30px;
   radius: 50px;
+}
+
+.dropdown1 {
+  width: 100%;
 }
 
 .classroom {
