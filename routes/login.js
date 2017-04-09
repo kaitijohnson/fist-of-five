@@ -46,7 +46,7 @@ function validateEmail(req, res, next) {
           }
         })
       } else {
-        res.render('index', {
+        res.render('splash', {
           title: 'Login',
           error: 'Bad Username or Password'
         })
