@@ -13,9 +13,6 @@ router.get('/', function(req, res, next) {
   });
 });
 
-
-
-
 /* session route will be re-written after socket is configured*/
 router.get('/session/:id', function(req, res, next) {
   res.render('index', {
