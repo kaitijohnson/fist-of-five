@@ -1,37 +1,40 @@
 <div class="navbar-fixed">
-  <nav>
-    <div class="nav-wrapper">
-      <a href="#!" class="brand-logo">Logo</a>
-      <ul class="right hide-on-med-and-down">
-        <li><a href="sass.html">Sass</a></li>
-        <li><a href="badges.html">Components</a></li>
-      </ul>
-    </div>
-  </nav>
+    <nav>
+        <div class="nav-wrapper">
+            <a href="#!" class="brand-logo">Logo</a>
+            <ul class="right hide-on-med-and-down">
+                <li><a href="sass.html">Sass</a></li>
+                <li><a href="badges.html">Components</a></li>
+            </ul>
+        </div>
+    </nav>
 </div>
 <div class="container">
-<h1>{{title}}</h1>
-<p>Welcome to {{title}}</p>
-<form method="post">
-     <div class="row">
-       <div class="input-field col s5">
-           <input id="first_name" type="text" class="validate">
-           <label for="first_name">First Name</label>
-       </div>
-       <div class="input-field col s7">
-           <input id="last_name" type="text" class="validate">
-           <label for="last_name">Last Name</label>
-       </div>
-       <div class="input-field col s9">
-           <input id="address" type="text" class="validate">
-           <label for="Address">Email</label>
-       </div>
-       <div class="input-field col s3">
-           <input id="apt" type="text" class="validate">
-           <label for="apt">Password</label>
-       </div>
-       <div class="row center">
-           <a id="submit" class="btn-large waves-effect orange darken-4">Create Account</a>
-       </div>
-     </form>
-</div>
+    <h1>{{title}}</h1>
+    <p>Welcome to {{title}}</p>
+    <p>ERROR: {{error}}</p>
+    <form method="post">
+        <div class="row">
+            <div class="input-field col s5">
+                <input value="Lee Sah" id="first_name" type="text" class="validate" name="firstName">
+                <label for="first_name">First Name</label>
+            </div>
+            <div class="input-field col s7">
+                <input value="Ma" id="last_name" type="text" class="validate" name="lastName">
+                <label for="last_name">Last Name</label>
+            </div>
+            <div class="input-field col s9">
+                <input value="lisa@lisa.com" id="address" type="text" class="validate" name="email">
+                <label for="Address">Email</label>
+            </div>
+            <div class="input-field col s3">
+                <input value="craag" id="apt" type="password" class="validate" name="password">
+                <label for="apt">Password</label>
+            </div>
+            <div class="row center">
+                <button class="btn waves-effect waves-light" type="submit">Submit
+                  <i class="material-icons right">send</i>
+                </button>
+            </div>
+    </form>
+    </div>

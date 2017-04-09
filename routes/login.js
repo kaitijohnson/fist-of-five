@@ -35,6 +35,7 @@ function validateEmail(req, res, next) {
               id: data.id,
               firstName: data.first_name,
               lastName: data.last_name,
+              isInstructor: data.is_instructor,
               email: req.body.email
             }, 'shhh')
             // console.log(token)

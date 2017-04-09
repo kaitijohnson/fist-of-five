@@ -6,20 +6,10 @@ const bcrypt = require('bcrypt');
 const humps = require('humps');
 const jwt = require('jsonwebtoken');
 
-/* Routes Boilerplate. */
-router.get('/', function(req, res, next) {
+router.get('/:id', function(req, res, next) {
+  console.log(req.params.id);
   res.render('index', {
-    title: 'Express'
-  });
-});
-
-
-
-
-/* session route will be re-written after socket is configured*/
-router.get('/session/:id', function(req, res, next) {
-  res.render('index', {
-    title: 'A class session'
+    title: `The individual user\'s dashboard ${req.params.id}`
   });
 });
 
