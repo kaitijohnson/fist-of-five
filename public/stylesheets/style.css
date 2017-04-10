@@ -15,8 +15,9 @@ body {
     background: url('/images/background.jpg');
     background-size: 100%;
     background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
     background-attachment: fixed;
-    background-color: #696969;
     margin-top: 0;
 }
 

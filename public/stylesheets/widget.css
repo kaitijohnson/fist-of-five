@@ -168,7 +168,7 @@ i {
   image-rendering: crisp-edges;
   line-height: 1;
   width: 48px;
-  background-image: url("file:///Users/ericaepperson/workspace/q2/week5/q2Project/emojis/images/test3.png");
+  background-image: url("test3.png");
   background-size: 48px 386px;
 }
 .react.stoked {
