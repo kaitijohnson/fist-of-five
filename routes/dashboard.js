@@ -10,8 +10,7 @@ router.get('/:id', verifyToken, getClasses, function(req, res, next) {
   console.log(req.params.id);
   getAllClasses()
     .then(classes => {
-      console.log(classes);
-      res.render(`dashboard`, {
+      res.render(`/dashboard/${req.params.id}`, {
         title: `The individual user\'s dashboard ${req.params.id}`,
         classes
       });
@@ -74,6 +73,7 @@ const insertClass = (className) => knex('classes').returning('*').insert({
 });
 const getUserClasses = (id) => knex('users').where('id', id)
 const getAllClasses = () => knex('classes')
+
 
 module.exports = router;
 ts = router;
