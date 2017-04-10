@@ -13,9 +13,41 @@ const signup = require('./routes/signup');
 const dashboard = require('./routes/dashboard');
 const classroom = require('./routes/classroom');
 
+function initClass(bigObject, classroomName){
+  if(!bigObject.hasOwnProperty(classroomName)){
+    bigObject[classroomName] = {
+      happy: {
+        value: 5,
+        students: []
+      },
+      ya: {
+        value: 4,
+        students: []
+      },
+      meh: {
+        value: 3,
+        students: []
+      },
+      confused: {
+        value: 2,
+        students: []
+      },
+      angry: {
+        value: 1,
+        students: []
+      }
+    }
+  }
+}
+
+
 const app = express();
 ioFunction(io);
 function ioFunction(io) {
+
+  let bigAssObject = {
+
+  }
   let sessionObject = {
     happy: {
       value: 5,
@@ -39,6 +71,7 @@ function ioFunction(io) {
     }
   }
 
+  let classArray = [];
   io.on('connection', function(socket) {
     socket.emit('findRoom');
     console.log("socket: ", socket.id, " has entered");
@@ -48,11 +81,13 @@ function ioFunction(io) {
     })
 
     socket.on('mood', data => {
-      sessionObject[data.mood].students.push('student')
-      io.to(data.room).emit('session object', sessionObject)
+      bigAssObject[data.room][data.mood].students.push('student')
+      io.to(data.room).emit('session object', bigAssObject[data.room])
     })
 
     socket.on('joinRoom', data=> {
+      initClass(bigAssObject, data);
+      console.log(bigAssObject[data]);
       console.log('Request to join ', data);
       socket.join(data, function (){
         console.log("the socket is in the following rooms", socket.rooms);
