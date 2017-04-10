@@ -22,11 +22,11 @@ $(() => {
     socket.emit('mood', {mood:input.attr('data-value'),room:currentRoom})
   })
   socket.on('session object', data => {
-    //     ul.append(`<li>${data.happy.students.length} are happy, ${data.ya.students.length} are ya,${data.meh.students.length} are meh,${data.confused.students.length} are confused,${data.angry.students.length} are angry,
-    // ${averageRating(data)}
-    //        </li>`)
+        ul.append(`<li>${data.happy.students.length} are happy, ${data.ya.students.length} are ya,${data.meh.students.length} are meh,${data.confused.students.length} are confused,${data.angry.students.length} are angry,
+    ${averageRating(data)}
+           </li>`)
 
-    ul.prepend(`<li>This is the class average: ${averageRating(data)}</li>`)
+    //ul.prepend(`<li>This is the class average: ${JSON.stringify(data)}</li>`)
   })
   socket.on('findRoom', data =>{
     socket.emit('joinRoom', currentRoom);
