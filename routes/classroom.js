@@ -9,13 +9,13 @@ const jwt = require('jsonwebtoken');
 
 router.get('/:id', function(req, res, next) {
   console.log(router);
-  ioFunction()
+  ioFunction(req);
   res.render('sockettest', {
     title: req.params.id
   })
 });
 
-function ioFunction() {
+function ioFunction(req) {
   let sessionObject = {
     happy: {
       value: 5,
@@ -39,7 +39,7 @@ function ioFunction() {
     }
   }
 
-  app.io.on('connection', function(socket) {
+  req.io.on('connection', function(socket) {
     console.log("someone entered");
 
     socket.on('disconnect', () => {
@@ -48,7 +48,7 @@ function ioFunction() {
 
     socket.on('mood', data => {
       sessionObject[data].students.push('student')
-      app.io.emit('session object', sessionObject)
+      req.io.emit('session object', sessionObject)
     })
   });
 }
