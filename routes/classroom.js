@@ -9,21 +9,14 @@ const jwt = require('jsonwebtoken');
 
 router.get('/:id', function(req, res, next) {
   console.log(router);
-<<<<<<< HEAD
   ioFunction(req);
-=======
-  ioFunction()
->>>>>>> 321fae72162fa19961476abf87946029af8953e6
   res.render('sockettest', {
     title: req.params.id
   })
 });
 
-<<<<<<< HEAD
+
 function ioFunction(req) {
-=======
-function ioFunction() {
->>>>>>> 321fae72162fa19961476abf87946029af8953e6
   let sessionObject = {
     happy: {
       value: 5,
@@ -47,11 +40,8 @@ function ioFunction() {
     }
   }
 
-<<<<<<< HEAD
   req.io.on('connection', function(socket) {
-=======
-  app.io.on('connection', function(socket) {
->>>>>>> 321fae72162fa19961476abf87946029af8953e6
+
     console.log("someone entered");
 
     socket.on('disconnect', () => {
@@ -60,11 +50,7 @@ function ioFunction() {
 
     socket.on('mood', data => {
       sessionObject[data].students.push('student')
-<<<<<<< HEAD
       req.io.emit('session object', sessionObject)
-=======
-      app.io.emit('session object', sessionObject)
->>>>>>> 321fae72162fa19961476abf87946029af8953e6
     })
   });
 }
