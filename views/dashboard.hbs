@@ -8,12 +8,17 @@
         </div>
     </nav>
 </div>
+<<<<<<< HEAD
+=======
+<p>{{title}}</p>
+>>>>>>> 321fae72162fa19961476abf87946029af8953e6
 <div class="container">
     <div class="inner-container">
         <span class="row">
     <p class="headline"><img class="responsive-image col l2 circle vertical-center" src="http://blog.brainfacts.org/wp-content/uploads/charles-manson-mugshot.jpg"> {{title}}: User Dashboard</p><br
 
   </span>
+<<<<<<< HEAD
     </div>
     <span class="row col 10">
       <ul class="collapsible" data-collapsible="accordion">
@@ -33,4 +38,28 @@
 </li>
 </ul>
 </span>
+=======
+
+
+    <div>
+        {{#each classes}}
+        <h1>{{this.name}}, {{this.id}}</h1>
+            <a href="../../classroom/{{this.id}}"> New Session for {{this.name}}
+            </a>
+
+        {{/each}}
+    </div>
+
+
+
+    <span class="row col 10">
+    <p>text</p>
+    <form class="createClass" method="post">
+      <label for="className">Class Name</label>
+      <input type="text" name="className" value="">
+      <button class="create btn" type="submit" name="button">Create Class</button>
+    </form>
+
+  </span>
+>>>>>>> 321fae72162fa19961476abf87946029af8953e6
 </div>
