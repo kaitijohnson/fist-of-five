@@ -13,11 +13,13 @@ router.get('/:id', verifyToken, getClasses, function(req, res, next) {
   });
 });
 
-router.post('/:id', verifyClassName, function(req,res,next){
+router.post('/:id', verifyClassName, function( req, res, next){
+  let userId = req.params.id;
   console.log("ClassName",req.body.className);
   insertClass(req.body.className)
-    .then((data) =>{
-      console.log(data);
+    .then((data) => addtoUsersClasses(userId, data[0].id))
+    .then((userClassRow) =>{
+      console.log(userClassRow);
       res.render('dashboard');
     })
 })
@@ -52,7 +54,11 @@ function verifyClassName(req,res,next){
     next();
   }
 }
-const addtoUsersClasses = (instructorID,classID)
+const addtoUsersClasses = (userId,classID) => {
+  return knex('users_classes')
+  .returning('*')
+  .insert({ 'class_id' : classID, 'user_id': userId });
+}
 const insertClass = (className) => knex('classes').returning('*').insert( { 'name': className } );
 const getUserClasses = (id) => knex('users').where('id', id)
 module.exports = router;
