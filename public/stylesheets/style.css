@@ -95,6 +95,10 @@ nav {
   margin-bottom: 50px;
 }
 
+#more {
+  display: none;
+}
+
 .dropdown1 {
   width: 100%;
 }
