@@ -10,7 +10,8 @@ router.get('/:id', verifyToken, getClasses, function(req, res, next) {
   console.log(req.params.id);
   getAllClasses()
     .then(classes => {
-      res.render(`/dashboard/${req.params.id}`, {
+      console.log(classes);
+      res.render(`dashboard`, {
         title: `The individual user\'s dashboard ${req.params.id}`,
         classes
       });
@@ -22,16 +23,21 @@ router.post('/:id', verifyClassName, function(req, res, next) {
   console.log("ClassName", req.body.className);
   insertClass(req.body.className)
     .then((data) => addtoUsersClasses(userId, data[0].id))
-    .then((userClassRow) => {
-      console.log(userClassRow);
-      res.render('dashboard');
+    .then((userClassRow) => getAllClasses())
+    .then(classes => {
+      res.render('dashboard', {
+        title: `The individual user\'s dashboard ${req.params.id}`,
+        classes
+      });
     })
+
 })
 
 function getClasses(req, res, next) {
   getUserClasses(req.params.id)
     .then(data => {
       console.log(data);
+      next()
     })
 }
 
@@ -68,6 +74,7 @@ const insertClass = (className) => knex('classes').returning('*').insert({
   'name': className
 });
 const getUserClasses = (id) => knex('users').where('id', id)
-const getAllClasses = () => knex('users')
+const getAllClasses = () => knex('classes')
 
 module.exports = router;
+ts = router;
