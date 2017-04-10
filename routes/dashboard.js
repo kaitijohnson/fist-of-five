@@ -10,7 +10,8 @@ router.get('/:id', verifyToken, getClasses, function(req, res, next) {
   console.log(req.params.id);
   getAllClasses()
     .then(classes => {
-      res.render(`/dashboard/${req.params.id}`, {
+      console.log(classes);
+      res.render(`dashboard`, {
         title: `The individual user\'s dashboard ${req.params.id}`,
         classes
       });
@@ -29,6 +30,7 @@ router.post('/:id', verifyClassName, function(req, res, next) {
         classes
       });
     })
+
 })
 
 function getClasses(req, res, next) {
