@@ -14,9 +14,7 @@ const dashboard = require('./routes/dashboard');
 const classroom = require('./routes/classroom');
 
 const app = express();
-console.log(io);
-app.io = io
-
+app.io = io;
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'hbs');
@@ -31,6 +29,10 @@ app.use(bodyParser.urlencoded({
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
+app.use((req, res, next) => {
+  req.io = io;
+  next();
+})
 // route handling
 app.use('/', index);
 app.use('/users', users);
