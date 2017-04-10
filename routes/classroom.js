@@ -41,9 +41,8 @@ function ioFunction(req) {
   }
 
   req.io.on('connection', function(socket) {
-
+    socket.join(`classroom_${req.params.id}`);
     console.log("someone entered");
-
     socket.on('disconnect', () => {
       console.log("user disconnected");
     })

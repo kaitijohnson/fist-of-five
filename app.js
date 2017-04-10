@@ -14,13 +14,7 @@ const dashboard = require('./routes/dashboard');
 const classroom = require('./routes/classroom');
 
 const app = express();
-<<<<<<< HEAD
 app.io = io;
-=======
-console.log(io);
-app.io = io
-
->>>>>>> 321fae72162fa19961476abf87946029af8953e6
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'hbs');
@@ -35,13 +29,10 @@ app.use(bodyParser.urlencoded({
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
-<<<<<<< HEAD
 app.use((req, res, next) => {
   req.io = io;
   next();
 })
-=======
->>>>>>> 321fae72162fa19961476abf87946029af8953e6
 // route handling
 app.use('/', index);
 app.use('/users', users);
