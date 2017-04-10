@@ -6,8 +6,8 @@ const bcrypt = require('bcrypt');
 const humps = require('humps');
 const jwt = require('jsonwebtoken');
 
-router.get('/:id', verifyToken, getClasses, function(req, res, next) {
-  console.log(req.params.id);
+router.get('/:id', verifyToken, function(req, res, next) {
+  console.log('hasdhfkasdhfjk');
   getAllClasses()
     .then(classes => {
       console.log(classes);

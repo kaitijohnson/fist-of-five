@@ -18,21 +18,12 @@
   </span>
     </div>
     <span class="row col 10">
-      <ul class="collapsible" data-collapsible="accordion">
-  <li>
-    <div class="collapsible-header"><span class="new badge" data-badge-caption="Class is in session!"></span><i class="material-icons">people</i>G44</div>
-<div class="collapsible-body">
-    <p>Lorem ipsum dolor sit amet.</p>
-</div>
-</li>
-</ul>
-<ul class="collapsible" data-collapsible="accordion">
-    <li>
-        <div class="collapsible-header"><span class="badge"></span><i class="material-icons">people</i>G49</div>
-        <div class="collapsible-body">
-          <p>text</p>
-        </div>
-    </li>
-</ul>
+
+
+      {{#each classes}}
+      <div class="collection">
+      <a href="../../classroom/{{this.id}}" class="collection-item"><span class="badge"></span><i class="material-icons">people</i>{{this.name}}
+      </a>
+      </div>
+      {{/each}}
 </span>
-</div>
