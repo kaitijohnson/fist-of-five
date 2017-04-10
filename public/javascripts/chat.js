@@ -19,12 +19,19 @@ $(() => {
   $('.rating').click((e) => {
     e.preventDefault()
     let input = $(e.target)
+    console.log(e.target);
     socket.emit('mood', {mood:input.attr('data-value'),room:currentRoom})
   })
   socket.on('session object', data => {
-        ul.append(`<li>${data.happy.students.length} are happy, ${data.ya.students.length} are ya,${data.meh.students.length} are meh,${data.confused.students.length} are confused,${data.angry.students.length} are angry,
-    ${averageRating(data)}
-           </li>`)
+    $('#stoked').text(`${data.happy.students.length} voted stoked`)
+    $('#happy').text(`${data.ya.students.length} voted happy `)
+    $('#ok').text(`${data.meh.students.length} voted ok`)
+    $('#sad').text(`${data.confused.students.length} voted sad`)
+    $('#mad').text(`${data.angry.students.length} voted mad`)
+
+    //     ul.append(`<li>${data.happy.students.length} are happy, ${data.ya.students.length} are ya,${data.meh.students.length} are meh,${data.confused.students.length} are confused,${data.angry.students.length} are angry,
+    // ${averageRating(data)}
+    //        </li>`)
 
     //ul.prepend(`<li>This is the class average: ${JSON.stringify(data)}</li>`)
   })
