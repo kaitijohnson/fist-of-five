@@ -14,7 +14,54 @@ const dashboard = require('./routes/dashboard');
 const classroom = require('./routes/classroom');
 
 const app = express();
+ioFunction(io);
+function ioFunction(io) {
+  let sessionObject = {
+    happy: {
+      value: 5,
+      students: []
+    },
+    ya: {
+      value: 4,
+      students: []
+    },
+    meh: {
+      value: 3,
+      students: []
+    },
+    confused: {
+      value: 2,
+      students: []
+    },
+    angry: {
+      value: 1,
+      students: []
+    }
+  }
+
+  io.on('connection', function(socket) {
+    socket.emit('findRoom');
+    console.log("socket: ", socket.id, " has entered");
+    console.log("the client is in", socket.rooms);
+    socket.on('disconnect', () => {
+      console.log("user disconnected");
+    })
+
+    socket.on('mood', data => {
+      sessionObject[data.mood].students.push('student')
+      io.to(data.room).emit('session object', sessionObject)
+    })
+
+    socket.on('joinRoom', data=> {
+      console.log('Request to join ', data);
+      socket.join(data, function (){
+        console.log("the socket is in the following rooms", socket.rooms);
+      });
+    })
+  });
+}
 app.io = io;
+
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'hbs');
