@@ -20,9 +20,7 @@ app.set('port', port);
  */
 
 var server = http.createServer(app);
-var io = require('socket.io')(server)
-ioFunction()
-
+app.io.attach(server)
 
 
 /**
@@ -117,7 +115,7 @@ function ioFunction() {
     }
   }
 
-  io.on('connection', function(socket) {
+  app.io.on('connection', function(socket) {
     console.log("someone entered");
 
     socket.on('disconnect', () => {
@@ -126,7 +124,7 @@ function ioFunction() {
 
     socket.on('mood', data => {
       sessionObject[data].students.push('student')
-      io.emit('session object', sessionObject)
+      app.io.emit('session object', sessionObject)
     })
   });
 }
