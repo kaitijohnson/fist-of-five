@@ -37,10 +37,10 @@ describe('GET /login', () => {
   });
 });
 
-describe('GET /session/id', () => {
+describe('GET /classroom/id', () => {
   it('responds with 200 status', done => {
     request(app)
-      .get('/session/1')
+      .get('/classroom/1')
       .expect(200, done);
   });
 });
