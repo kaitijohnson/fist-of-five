@@ -2,7 +2,7 @@ $(() => {
   console.log();
   let = urlArray = $(location).attr('href').split('/');
   let classId = urlArray[urlArray.length -1];
-  let currentRoom = `${classId}_classroom`
+  let currentRoom = `classroom_${classId}`
 
 
   while(isNaN(parseInt(classId))){
