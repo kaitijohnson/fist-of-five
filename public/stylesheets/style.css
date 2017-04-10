@@ -12,7 +12,7 @@ body {
     /*padding: 50px;*/
     font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
     height: 100%;
-    background: url('https://lh6.googleusercontent.com/i4m6QmFqp49ajh2qRhHUU2gHtASrteQ-toMNON6i7zCf0xvxxEwi7yt23jziOWKsGrjIsvmW1xCqjL4=w1440-h699-rw');
+    background: url('background.jpg');
     background-size: 100%;
     background-repeat: no-repeat;
     background-attachment: fixed;
@@ -25,12 +25,26 @@ div {
   padding-right: 10px;
 }
 
+nav {
+  height: 45px !important;
+  line-height: 45px !important;
+  margin: 0;
+  padding: 0;
+}
+
 .navbar-fixed {
-  background-color: #e65100 !important;
+  height: 45px !important;
+  line-height: 45px !important;
+  margin: 0;
+  padding: 0;
 }
 
 .nav-wrapper {
-  background-color: #e65100 !important;
+  background-color: rgba(30,30,30,.4) !important;
+  height: 45px !important;
+  line-height: 45px !important;
+  margin: 0;
+  padding: 0;
 }
 
 .container{
@@ -43,14 +57,6 @@ div {
   margin-top: 0;
 }
 
-.navbar-fixed {
-    background-color: rgba(230, 81, 0, 0.5);
-}
-
-.nav-wrapper {
-    background-color: rgba(230, 81, 0, 0.5);
-}
-
 .vertical-center {
   display: flex;
   flex-direction: column;
@@ -60,6 +66,7 @@ div {
 .headline {
     font-family: 'Architects Daughter' !important;
     font-size: 85px;
+    color: rgba(222,222,222,.8);
 }
 
 .headline2 {
@@ -67,9 +74,24 @@ div {
     font-size: 30px;
 }
 
+.btn {
+  background-color: #659792 !important;
+}
+
 .card-btn {
+  background-color: #659792 !important;
   font-size: 30px;
-  radius: 50px;
+  border-radius: 50px !important;
+}
+
+.brand-logo {
+  margin: 5px;
+}
+
+.inner-container {
+  background-color: #2c3c47;
+  margin-top: 10px;
+  margin-bottom: 50px;
 }
 
 .dropdown1 {
