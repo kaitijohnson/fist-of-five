@@ -15,10 +15,6 @@ router.get('/:id', function(req, res, next) {
   })
 });
 
-<<<<<<< HEAD
-=======
-
->>>>>>> removed git markers
 function ioFunction(req) {
   let sessionObject = {
     happy: {
@@ -44,10 +40,7 @@ function ioFunction(req) {
   }
 
   req.io.on('connection', function(socket) {
-<<<<<<< HEAD
-=======
 
->>>>>>> removed git markers
     console.log("someone entered");
 
     socket.on('disconnect', () => {
