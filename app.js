@@ -70,8 +70,6 @@ function ioFunction(io) {
       students: []
     }
   }
-
-  let classArray = [];
   io.on('connection', function(socket) {
     socket.emit('findRoom');
     console.log("socket: ", socket.id, " has entered");
@@ -81,7 +79,17 @@ function ioFunction(io) {
     })
 
     socket.on('mood', data => {
-      bigAssObject[data.room][data.mood].students.push('student')
+
+      let classroom = bigAssObject[data.room]
+      for (var mood in classroom) {
+        for (var i = 0; i < classroom[mood].students.length; i++) {
+          if(classroom[mood].students[i] === socket.id ){
+            classroom[mood].students.splice(i,1);
+            console.log("students in ",mood," ",classroom[mood].students);
+          }
+        }
+      }
+      bigAssObject[data.room][data.mood].students.push(socket.id)
       io.to(data.room).emit('session object', bigAssObject[data.room])
     })
 
