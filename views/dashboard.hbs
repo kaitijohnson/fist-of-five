@@ -1,4 +1,3 @@
-
 <div class="navbar-fixed">
     <nav>
         <div class="nav-wrapper">
@@ -9,11 +8,24 @@
         </div>
     </nav>
 </div>
-<p headline>{{title}}</p>
+<p>{{title}}</p>
 <div class="container">
     <span class="row">
     <p class="headline"><img class="responsive-img" src="/images/charles-manson-mugshot.jpg"> User</p><br>
   </span>
+
+
+    <div>
+        {{#each classes}}
+        <h1>{{this.name}}, {{this.id}}</h1>
+            <a href="classroom/{{this.id}}"> New Session for {{this.name}}
+            </a>
+
+        {{/each}}
+    </div>
+
+
+
     <span class="row col 10">
     <p>text</p>
     <form class="createClass" method="post">
