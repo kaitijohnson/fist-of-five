@@ -10,6 +10,7 @@ const users = require('./routes/users');
 const login = require('./routes/login');
 const signup = require('./routes/signup');
 const dashboard = require('./routes/dashboard');
+const classroom = require('./routes/classroom');
 
 const app = express();
 
@@ -32,6 +33,7 @@ app.use('/users', users);
 app.use('/login', login);
 app.use('/signup', signup);
 app.use('/dashboard', dashboard);
+app.use('/classroom', classroom);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
