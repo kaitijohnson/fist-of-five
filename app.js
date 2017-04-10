@@ -4,7 +4,8 @@ const favicon = require('serve-favicon');
 const logger = require('morgan');
 const cookieParser = require('cookie-parser');
 const bodyParser = require('body-parser');
-
+const io = require('socket.io')();
+// routes
 const index = require('./routes/index');
 const users = require('./routes/users');
 const login = require('./routes/login');
@@ -13,6 +14,8 @@ const dashboard = require('./routes/dashboard');
 const classroom = require('./routes/classroom');
 
 const app = express();
+console.log(io);
+app.io = io
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -28,6 +31,7 @@ app.use(bodyParser.urlencoded({
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
+// route handling
 app.use('/', index);
 app.use('/users', users);
 app.use('/login', login);
