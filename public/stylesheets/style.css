@@ -8,7 +8,19 @@ html {
     height: 100%;
 }
 
-body {
+div {
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+nav {
+  height: 45px !important;
+  line-height: 45px !important;
+  margin: 0;
+  padding: 0;
+}
+
+.page {
     /*padding: 50px;*/
     font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
     height: 100%;
@@ -21,16 +33,13 @@ body {
     margin-top: 0;
 }
 
-div {
-  padding-left: 10px;
-  padding-right: 10px;
-}
-
-nav {
-  height: 45px !important;
-  line-height: 45px !important;
-  margin: 0;
-  padding: 0;
+.splash {
+    /*padding: 50px;*/
+    font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+    height: 100%;
+    background-color: #2b3a45;
+    background-size: 100%;
+    margin-top: 0;
 }
 
 .navbar-fixed {
@@ -48,12 +57,33 @@ nav {
   padding: 0;
 }
 
-.container{
-  background:rgba(222,222,222,.8);
+.collection {
+  padding-left: 0;
+  padding-right: 0;
+}
+
+.container {
+  background: rgba(44, 60, 71, 0.8);
   position: relative;
   overflow-y: scroll;
   height: 100%;
   /*padding-bottom:100px;*/
+  padding-top: 0;
+  margin-top: 0;
+}
+
+.inner-container {
+  background-color: rgba(222,222,222,1);
+  margin-top: 10px;
+  margin-bottom: 50px;
+  border-radius: 2px;
+}
+
+.container-splash {
+  /*background:rgba(222,222,222,.8);*/
+  position: relative;
+  overflow-y: scroll;
+  height: 100%;
   padding-top: 0;
   margin-top: 0;
 }
@@ -64,10 +94,16 @@ nav {
   justify-content: center;
 }
 
+.full-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 .headline {
     font-family: 'Architects Daughter' !important;
     font-size: 85px;
-    color: rgba(222,222,222,.8);
+    color: black;
 }
 
 .headline2 {
@@ -75,24 +111,48 @@ nav {
     font-size: 30px;
 }
 
+.dash {
+  padding-top: 30px;
+  padding-left: 20px;
+  padding-right: 20px;
+}
+
 .btn {
   background-color: #659792 !important;
 }
 
+.card-panel {
+  padding: 0 !important;
+}
+
 .card-btn {
   background-color: #659792 !important;
+  height: 100px;
+  /*width: 100% !important;*/
   font-size: 30px;
-  border-radius: 50px !important;
+  border-radius: 10px !important;
+  padding: 0;
+}
+
+.inner-btn {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  height: 100% !important;
+  vertical-align: middle;
+  line-height: 100px;
+}
+
+.inner-btn2 {
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  margin: 20px;
+  border: 20px;
 }
 
 .brand-logo {
   margin: 5px;
-}
-
-.inner-container {
-  background-color: #2c3c47;
-  margin-top: 10px;
-  margin-bottom: 50px;
 }
 
 #more {

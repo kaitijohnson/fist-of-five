@@ -1,29 +1,29 @@
-<div class="navbar-fixed">
-    <nav>
-        <div class="nav-wrapper">
-            <a href="../" class="brand-logo"><img src="/images/logo.png" height="35px"></a>
-            <ul class="right hide-on-med-and-down">
-                <li><a href="../">Logout</a></li>
-            </ul>
-        </div>
-    </nav>
-</div>
-<div class="container">
-    <div class="inner-container">
-        <span class="row">
-
-    <p class="headline"><img class="responsive-image col l2 circle vertical-center" src="/images/charles-manson-mugshot.jpg"> {{title}}</p><br>
-
-
-  </span>
+<body class="page">
+    <div class="navbar-fixed">
+        <nav>
+            <div class="nav-wrapper">
+                <a href="../" class="brand-logo"><img src="/images/logo.png" height="35px"></a>
+                <ul class="right hide-on-med-and-down">
+                    <li><a href="../">Logout</a></li>
+                </ul>
+            </div>
+        </nav>
     </div>
-    <span class="row col 10">
-
-
-      {{#each classes}}
-      <div class="collection">
-      <a href="../../classroom/{{this.id}}" class="collection-item"><span class="badge"></span><i class="material-icons">people</i>{{this.name}}
-      </a>
+    <div class="container">
+      <div class="dash">
+        <div class="inner-container">
+          <span class="row">
+            <p class="valign-wrapper headline"><img class="responsive-image col l2 circle vertical-center" src="/images/charles-manson-mugshot.jpg"> {{title}}</p><br>
+          </span>
+        </div>
+        <span class="row col 10">
+        {{#each classes}}
+          <div class="collection">
+            <a href="../../classroom/{{this.id}}" class="valign-wrapper collection-item"><span class="badge"></span><i class="material-icons">people</i> {{this.name}}
+            </a>
+          </div>
+          {{/each}}
+        </span>
       </div>
-      {{/each}}
-</span>
+    </div>
+</body>
