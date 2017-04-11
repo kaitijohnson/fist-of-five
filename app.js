@@ -79,7 +79,7 @@ function ioFunction(io) {
     })
 
     socket.on('mood', data => {
-
+      console.log("the data", data);
       let classroom = bigAssObject[data.room]
       for (var mood in classroom) {
         for (var i = 0; i < classroom[mood].students.length; i++) {

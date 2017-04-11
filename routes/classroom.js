@@ -10,7 +10,7 @@ const jwt = require('jsonwebtoken');
 router.get('/:id', function(req, res, next) {
   console.log(router);
   // ioFunction(req);
-  res.render('sockettest', {
+  res.render('classroom', {
     title: req.params.id
   })
 });
