@@ -13,8 +13,8 @@ const signup = require('./routes/signup');
 const dashboard = require('./routes/dashboard');
 const classroom = require('./routes/classroom');
 
-function initClass(bigObject, classroomName){
-  if(!bigObject.hasOwnProperty(classroomName)){
+function initClass(bigObject, classroomName) {
+  if (!bigObject.hasOwnProperty(classroomName)) {
     bigObject[classroomName] = {
       happy: {
         value: 5,
@@ -43,6 +43,7 @@ function initClass(bigObject, classroomName){
 
 const app = express();
 ioFunction(io);
+
 function ioFunction(io) {
 
   let bigAssObject = {
@@ -83,9 +84,9 @@ function ioFunction(io) {
       let classroom = bigAssObject[data.room]
       for (var mood in classroom) {
         for (var i = 0; i < classroom[mood].students.length; i++) {
-          if(classroom[mood].students[i] === socket.id ){
-            classroom[mood].students.splice(i,1);
-            console.log("students in ",mood," ",classroom[mood].students);
+          if (classroom[mood].students[i] === socket.id) {
+            classroom[mood].students.splice(i, 1);
+            console.log("students in ", mood, " ", classroom[mood].students);
           }
         }
       }
@@ -93,14 +94,29 @@ function ioFunction(io) {
       io.to(data.room).emit('session object', bigAssObject[data.room])
     })
 
-    socket.on('joinRoom', data=> {
+    socket.on('joinRoom', data => {
       initClass(bigAssObject, data);
       console.log(bigAssObject[data]);
       console.log('Request to join ', data);
-      socket.join(data, function (){
+      socket.join(data, function() {
         console.log("the socket is in the following rooms", socket.rooms);
       });
     })
+
+    // socket.on('checkRoom', (data) => {
+    //   if (!bigAssObject.hasOwnProperty(data.currentRoom)) {
+    //     if (data.isInstructor) {
+    //       initClass(bigAssObject, data);
+    //       socket.join(data, function() {
+    //         console.log("the socket is in the following rooms", socket.rooms);
+    //       });
+    //     } else {
+    //       socket.emit('toDashboard')
+    //     }
+    //   }
+    //
+    // })
+
   });
 }
 app.io = io;

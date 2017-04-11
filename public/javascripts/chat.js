@@ -1,14 +1,15 @@
 $(() => {
   console.log();
   let = urlArray = $(location).attr('href').split('/');
-  let classId = urlArray[urlArray.length -1];
+  let classId = urlArray[urlArray.length - 1];
   let currentRoom = `classroom_${classId}`
+  let isInstructor = true;
 
 
-  while(isNaN(parseInt(classId))){
+  while (isNaN(parseInt(classId))) {
     urlArray.pop()
     console.log(urlArray);
-    classId = urlArray[urlArray.length -1];
+    classId = urlArray[urlArray.length - 1];
     console.log(classId);
   }
 
@@ -20,7 +21,12 @@ $(() => {
     e.preventDefault()
     let input = $(e.target)
     console.log(e.target);
-    socket.emit('mood', {mood:input.attr('data-value'), room:currentRoom})
+
+    socket.emit('mood', {
+      mood: input.attr('data-value'),
+      room: currentRoom
+    })
+
   })
   socket.on('session object', data => {
     $('#stoked').text(`${data.happy.students.length}`)
@@ -35,12 +41,19 @@ $(() => {
 
     //ul.prepend(`<li>This is the class average: ${JSON.stringify(data)}</li>`)
   })
-  socket.on('findRoom', data =>{
+  socket.on('findRoom', data => {
+    socket.emit('checkRoom', {
+      currentRoom,
+      isInstructor
+    })
     socket.emit('joinRoom', currentRoom);
   })
-  socket.on('message', data =>{
+  socket.on('message', data => {
     console.log("got something");
     ul.prepend(`<li>${data}</li>`)
+  })
+  socket.on('toDashboard', () => {
+
   })
 })
 
