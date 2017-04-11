@@ -18,12 +18,17 @@
         </div>
         <span class="row col 10">
         {{#each classes}}
-          <div class="collection">
-            <a href="../../classroom/{{this.id}}" class="valign-wrapper collection-item z-depth-5"><span class="badge"></span><i class="material-icons">people</i> {{this.name}}
+          <div class="collection" onclick="myFunction({{this.id}})">
+            <a class="valign-wrapper collection-item z-depth-5"><span class="badge"></span><i class="material-icons">people</i> {{this.name}}
             </a>
           </div>
           {{/each}}
         </span>
       </div>
     </div>
+    <script>
+    function myFunction(id) {
+        window.open("../../classroom/" + id, "_blank",  "directories=no,toolbar=no,scrollbars=no,resizable=no,location=no,status=no,top=10,left=10,width=200,height=500");
+    }
+    </script>
 </body>
