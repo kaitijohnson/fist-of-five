@@ -1,10 +1,11 @@
 $(() => {
-  console.log();
+  // console.log();
   let = urlArray = $(location).attr('href').split('/');
   let classId = urlArray[urlArray.length - 1];
   let currentRoom = `classroom_${classId}`
-  let isInstructor = true;
-
+  let infoEl = $('.INFORMATION')
+  let isInstructor = infoEl.attr('data-is-instructor');
+  let userId = infoEl.attr('data-id');
 
   while (isNaN(parseInt(classId))) {
     urlArray.pop()
@@ -44,16 +45,19 @@ $(() => {
   socket.on('findRoom', data => {
     socket.emit('checkRoom', {
       currentRoom,
-      isInstructor
+      isInstructor: isInstructor
     })
-    socket.emit('joinRoom', currentRoom);
+    // socket.emit('joinRoom', currentRoom);
   })
   socket.on('message', data => {
     console.log("got something");
     ul.prepend(`<li>${data}</li>`)
   })
   socket.on('toDashboard', () => {
-
+    window.location.replace(`../../dashboard/${userId}`)
+  })
+  socket.on('getUpToDate', () => {
+    // socket.emit()
   })
 })
 
