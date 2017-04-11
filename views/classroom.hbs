@@ -7,119 +7,164 @@
 
     <!-- socket.io jquery js stuff -->
     <script src="https://cdn.socket.io/socket.io-1.2.0.js"></script>
-    <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
-    <script src="/javascripts/chat.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta property="og:image" content="https://i.imgsafe.org/256d103.png" />
+
+    <!-- Compiled and minified CSS -->
+
+    <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.1/js/materialize.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.1/css/materialize.min.css">
+    <script type="text/javascript" src='https://code.jquery.com/jquery-2.1.4.min.js'></script>
+    <script type="text/javascript" src='https://cdnjs.cloudflare.com/ajax/libs/velocity/1.2.3/velocity.js'></script>
+    <script type="text/javascript" src='https://cdnjs.cloudflare.com/ajax/libs/velocity/1.2.3/velocity.ui.min.js'></script>
+    <script type="text/javascript" src="/javascripts/widget.js"></script>
+    <script type="text/javascript" src="/javascripts/chat.js"></script>
+
+    <!-- Compiled and minified JavaScript -->
+
+    <link rel="stylesheet" href="/stylesheets/widget.css">
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
 </head>
 
 <body>
-    <div class='logo'><img src="images/logo.png" height="50px" /></div><br>
-    <div class="container">
-        <!-- 200px by 500px-->
-        <!--Stoked Emoji-->
-        <div class="actionBox">
-            <span>
-          <div class="emoji-reactions">  <!--popup description of emoji and white bqckground-->
-          <ul><li>
-          <span>
-            <div class="reaction">
-              <i class="react stoked"></i>
-              <button class='rating' data-value='happy' type="button">Stoked</button>
-            </div><div style="margin: 0 auto; width:175px;" class="right-align vertical-center" id="stoked">1 voting stoked</div>
-            <div class="text">
-              <div>Stoked</div>
-            </div>
-          </span>
-            </li>
-            </ul>
-        </div>
-        </span>
-    </div>
-    <br><br>
-    <!--Happy Emoji-->
-    <div class="actionBox">
-        <span>
-           <div class="emoji-reactions">  <!--popup description of emoji and white bqckground-->
-           <ul><li>
-           <span>
-             <div class="reaction">
-               <i class="react happy"></i>
-               <button class='rating' data-value='ya' type="button">Happy</button>
-             </div><div style="margin: 0 auto; width:175px;" class="right-align" id="happy">1 voting happy</div>
-             <div class="text">
-               <div>Happy</div>
-             </div>
-           </span>
-        </li>
-        </ul>
-    </div>
-    </span>
-    </div>
-    <br><br>
-    <!--Ok Emoji-->
-    <div class="actionBox">
-        <span>
-            <div class="emoji-reactions">  <!--popup description of emoji and white bqckground-->
-            <ul><li>
-            <span>
-              <div class="reaction">
-                <i class="react ok"></i>
-                <button class='rating' data-value='meh' type="button">Ok</button>
-              </div><div style="margin: 0 auto; width:175px;" class="right-align" id="ok">1 voting ok</div>
-              <div class="text">
-                <div>Ok</div>
-              </div>
-            </span>
-        </li>
-        </ul>
-    </div>
-    </span>
-    </div>
-    <br><br>
-    <!--Lost Emoji-->
-    <div class="actionBox">
-        <span>
-             <div class="emoji-reactions">  <!--popup description of emoji and white bqckground-->
-             <ul><li>
-             <span>
-               <div class="reaction">
-                 <i class="react sad"></i>
-                 <button class='rating' data-value='confused' type="button">Sad</button>
-               </div><div style="margin: 0 auto; width:175px;" class="right-align" id="sad">1 voting sad</div>
-               <div class="text">
-                 <div>Lost</div>
+<div class='logo'><img src="/images/logo.png" height="34px" /></div><br>
+
+<div class="container">
+  <!-- 200px by 500px-->
+
+  <table>
+          <thead>
+            <!-- <tr>
+                <th>Name</th>
+                <th>Item Name</th>
+                <th>Item Price</th>
+            </tr> -->
+          </thead>
+
+          <tbody>
+
+            <!--Stoked Emoji-->
+            <tr>
+              <td>
+                <div class="actionBox">
+                <span>
+                  <div class="emoji-reactions">  <!--popup description of emoji and white background-->
+                   <span>
+                    <div class="reaction">
+                      <i class="react stoked"><input type="image" height="48px" src="/images/stoked.png" name="saveForm" class="reaction_button" id="saveForm" data-value="happy"/></i>
+                    </div>
+                    <!-- <div class="text">
+                      <div></div> -->
+                   </div>
+                  </span>
+                 </div>
+                </span>
                </div>
-             </span>
-        </li>
-        </ul>
-    </div>
-    </span>
-    </div>
-    <br><br>
-    <!--Very Lost Emoji-->
-    <div class="actionBox">
-        <span>
-              <div class="emoji-reactions">  <!--popup description of emoji and white bqckground-->
-              <ul><li>
-              <span>
-                <div class="reaction">
-                  <i class="react crying"></i>
-                  <button class='rating' data-value='angry' type="button">Mad</button>
-                </div><div style="margin: 0 auto; width:175px;" class="right-align" id="mad">1 voting mad</div>
-                <div class="text">
-                  <div>Very Lost</div>
-                </div>
-              </span>
-        </li>
-        </ul>
-    </div>
-    </span>
-    </div>
-    <br><br>
-    </div>
+              </td>
+            <td><div id="stoked">13</div></td>
+            </tr>
+
+            <!--Happy Emoji-->
+            <tr>
+              <td>
+                <div class="actionBox">
+                <span>
+                  <div class="emoji-reactions">  <!--popup description of emoji and white background-->
+                   <span>
+                    <div class="reaction">
+                      <i class="react happy"><input type="image" height="48px" src="/images/happy.png" name="saveForm" class="reaction_button" id="saveForm" data-value="ya"/></i>
+                    </div>
+                    <!-- <div class="text">
+                      <div></div> -->
+                   </div>
+                  </span>
+                 </div>
+                </span>
+               </div>
+              </td>
+            <td><div id="happy">13</div></td>
+            </tr>
 
 
+            <!--OK Emoji-->
+            <tr>
+              <td>
+                <div class="actionBox">
+                <span>
+                  <div class="emoji-reactions">  <!--popup description of emoji and white background-->
+                   <span>
+                    <div class="reaction">
+                      <i class="react ok"><input class="reaction_button" type="image" height="48px" src="/images/ok.png" name="saveForm"  id="saveForm" data-value="meh"/></i>
+                    </div>
+                    <!-- <div class="text">
+                      <div></div> -->
+                   </div>
+                  </span>
+                 </div>
+                </span>
+               </div>
+              </td>
+            <td><div id="ok">13</div></td>
+            </tr>
+
+
+            <!--Sad Emoji-->
+            <tr>
+              <td>
+                <div class="actionBox">
+                <span>
+                  <div class="emoji-reactions">  <!--popup description of emoji and white background-->
+                   <span>
+                    <div class="reaction">
+                      <i class="react sad"><input type="image" height="48px" src="/images/sad.png" name="saveForm" class="reaction_button" id="saveForm" data-value="confused"/></i>
+                    </div>
+                    <!-- <div class="text">
+                      <div></div> -->
+                   </div>
+                  </span>
+                 </div>
+                </span>
+               </div>
+              </td>
+            <td><div id="sad">13</div></td>
+            </tr>
+
+
+            <!--Mad Emoji-->
+            <tr>
+              <td>
+                <div class="actionBox">
+                <span>
+                  <div class="emoji-reactions">  <!--popup description of emoji and white background-->
+                   <span>
+                    <div class="reaction">
+                      <i class="react crying"><input type="image" height="48px" src="/images/crying.png" name="saveForm" class="reaction_button" id="saveForm" data-value="angry"/></i>
+                    </div>
+                    <!-- <div class="text">
+                      <div></div> -->
+                   </div>
+                  </span>
+                 </div>
+                </span>
+               </div>
+              </td>
+            <td><div id="mad">13</div></td>
+            </tr>
+
+
+          </tbody>
+        </table>
+
+
+
+<footer>
+
+  <div style="font-size:12px; paddding-bottom:5px;">more options</div>
+  <a href="" target="_blank"><i class="fa fa-facebook"></i></a> | <a href="" target="_blank"><i class="fa fa-twitter"></i></a>
+</footer>
+</div>
 
 </body>
 
 </html>
->>>>>>> edf1723ecacc52e4c077decc5ad390ea5a01d71d
