@@ -5,6 +5,8 @@ $(() => {
   let currentRoom = `classroom_${classId}`
   let infoEl = $('.INFORMATION')
   let isInstructor = infoEl.attr('data-is-instructor');
+  let firstName = infoEl.attr('data-first-name');
+  let lastName = infoEl.attr('data-last-name');
   let userId = infoEl.attr('data-id');
   let hasInstructor = true;
 
@@ -26,7 +28,10 @@ $(() => {
 
     socket.emit('mood', {
       mood: input.attr('data-value'),
-      room: currentRoom
+      room: currentRoom,
+      firstName: firstName,
+      lastName: lastName,
+      id: userId
     })
 
     // } else {
@@ -35,6 +40,7 @@ $(() => {
 
   })
   socket.on('session object', data => {
+    console.log(data);
     $('#stoked').text(`${data.happy.students.length}`)
     $('#happy').text(`${data.ya.students.length}`)
     $('#ok').text(`${data.meh.students.length}`)

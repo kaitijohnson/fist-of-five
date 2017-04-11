@@ -69,20 +69,22 @@ function ioFunction(io) {
     })
 
     socket.on('mood', data => {
+      console.log('---------------------', bigAssObject[data.room]);
+      let userObject = createUserObject(data)
       if (bigAssObject[data.room].instructor.inClassroom) {
         // console.log("the data", data);
         let classroom = bigAssObject[data.room]
         for (var mood in classroom) {
           if (mood != 'instructor') {
             for (var i = 0; i < classroom[mood].students.length; i++) {
-              if (classroom[mood].students[i] === socket.id) {
+              if (classroom[mood].students[i].id === userObject.id) {
                 classroom[mood].students.splice(i, 1);
                 // console.log("students in ", mood, " ", classroom[mood].students);
               }
             }
           }
         }
-        bigAssObject[data.room][data.mood].students.push(socket.id)
+        bigAssObject[data.room][data.mood].students.push(userObject)
         io.to(data.room).emit('session object', bigAssObject[data.room])
       } else {
         io.to(data.room).emit('sendToast')
@@ -171,4 +173,10 @@ app.use(function(err, req, res, next) {
   res.render('error');
 });
 
+function createUserObject(userData) {
+  return {
+    name: userData.firstName + ' ' + userData.lastName,
+    id: userData.id
+  }
+}
 module.exports = app;
