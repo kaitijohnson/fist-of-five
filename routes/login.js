@@ -54,6 +54,6 @@ function validateEmail(req, res, next) {
     })
 }
 
-const getUserByEmail = (email) => knex('users').where('email', email).select(['email', 'hashed_password', 'id']).first()
+const getUserByEmail = (email) => knex('users').where('email', email).select(['email', 'hashed_password', 'id', 'is_instructor', 'first_name', 'last_name']).first()
 
 module.exports = router;

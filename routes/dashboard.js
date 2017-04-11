@@ -6,11 +6,11 @@ const bcrypt = require('bcrypt');
 const humps = require('humps');
 const jwt = require('jsonwebtoken');
 
-router.get('/:id', verifyToken, function(req, res, next) {
-  console.log('hasdhfkasdhfjk');
+router.get('/:id', verifyToken, instructorBool, function(req, res, next) {
+  // console.log('hasdhfkasdhfjk');
   getAllClasses()
     .then(classes => {
-      console.log(classes);
+      // console.log(classes);
       res.render(`dashboard`, {
         title: `The individual user\'s dashboard ${req.params.id}`,
         classes
@@ -20,7 +20,7 @@ router.get('/:id', verifyToken, function(req, res, next) {
 
 router.post('/:id', verifyClassName, function(req, res, next) {
   let userId = req.params.id;
-  console.log("ClassName", req.body.className);
+  // console.log("ClassName", req.body.className);
   insertClass(req.body.className)
     .then((data) => addtoUsersClasses(userId, data[0].id))
     .then((userClassRow) => getAllClasses())
@@ -36,19 +36,19 @@ router.post('/:id', verifyClassName, function(req, res, next) {
 function getClasses(req, res, next) {
   getUserClasses(req.params.id)
     .then(data => {
-      console.log(data);
+      // console.log(data);
       next()
     })
 }
 
 function verifyToken(req, res, next) {
   jwt.verify(req.cookies.token, 'shhh', function(err, decoded) {
-    console.log(Object.keys(decoded));
+    // console.log(Object.keys(decoded));
     if (decoded.id == req.params.id) {
       next()
     } else {
       res.clearCookie('token')
-      res.redirect(`/login`)
+      // res.redirect(`/login`)
     }
 
   });
@@ -60,6 +60,15 @@ function verifyClassName(req, res, next) {
   } else {
     next();
   }
+}
+
+function instructorBool(req, res, next) {
+  jwt.verify(req.cookies.token, 'shhh', (err, decoded) => {
+    // console.log(decoded);
+    res.locals.isInstructor = decoded.isInstructor;
+    console.log(res.locals.isInstructor);
+    next()
+  })
 }
 
 const addtoUsersClasses = (userId, classID) => {
