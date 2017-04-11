@@ -97,6 +97,11 @@ nav {
   border-radius: 5px;
 }
 
+.logo-splash {
+    max-width: 100% !important;
+    height: auto;
+}
+
 .no-pad {
   padding-left: 0 !important;
   padding-right: 0 !important;
@@ -142,9 +147,9 @@ nav {
 
 .card-btn {
   background-color: #659792 !important;
-  height: 100px;
+  /*height: 100px;*/
   /*width: 100% !important;*/
-  font-size: 30px;
+  /*font-size: 30px;*/
   border-radius: 5px !important;
   padding: 0;
   padding-left: 0 !important;
@@ -163,9 +168,10 @@ nav {
 .inner-btn2 {
   justify-content: center;
   align-items: center;
-  padding: 20px;
+  height: 100% !important;
+  /*padding: 20px;
   margin: 20px;
-  border: 20px;
+  border: 20px;*/
 }
 
 .brand-logo {

@@ -12,27 +12,32 @@
     <div class="container-splash">
         <span class="row">
     <!-- <p class="center headline">{{title}}</p><br> -->
-    <div class="col l2"></div>
-    <div class="center"><img src="/images/handslogo.png" class="center responsive-image col l8"></div>
-  </span>
-        <div class="row">
-            <div class="col s2"></div>
-            <div class="card-btn col s8 z-depth-5">
-                <a class="valign-wrapper center-align white-text waves-effect inner-btn2" href="./signup">Create a new account
-                </a>
-                <a class="white-text waves-effect inner-btn2" href="./login">Login to your account
-                </a>
+    <div class="center col l2"></div>
+    <div class="center"><img src="/images/handslogo.png" class="center logo-splash no-pad col l8"></div>
+        <!-- <div class="row"> -->
+            <div class=" center col s2"></div>
+          </span>
+            <span class="row">
+            <div class="center col s2"></div>
+            <div class="center card-btn col s12 l8 z-depth-5">
+              <!-- <div class="row"> -->
+                <a class="white-text waves-effect valign-wrapper center-align inner-btn2 col s12 m6 l6" href="./signup"><h3>Create a new account
+                </h3></a>
+                <a class="white-text waves-effect valign-wrapper center-align inner-btn2 col s12 m5 l5" href="./login"><h3>Login to your account
+                </h3></a>
             </div>
-
-        </div>
+          <!-- </div> -->
+            <!-- <div class=" center col s2"></div> -->
+        </span>
         <!-- Dropdown Trigger -->
+        <script type="text/javascript" src="/javascripts/prevent.js"></script>
         <script>
             function learnMore() {
                 document.getElementById("more").style.display = "block";
             }
         </script>
-<p class="center headline2" onclick="learnMore()">Learn about us!</p>
-        <div class="row">
+<a href="#"><p id="moreInfo" class="center dash headline2">Learn about us!</p></a>
+        <div class="row no-pad">
 
             <div class="col s0 m2 l2"></div>
             <div class="col s12 m8 l8 no-pad">
@@ -44,5 +49,5 @@
               </div>
             </div>
         </div>
-
+</div>
 </body>
