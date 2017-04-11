@@ -16,7 +16,7 @@ $(() => {
   let socket = io()
   let ul = $('#messages')
 
-  $('.rating').click((e) => {
+  $('.reaction_button').click((e) => {
     e.preventDefault()
     let input = $(e.target)
     console.log(e.target);
