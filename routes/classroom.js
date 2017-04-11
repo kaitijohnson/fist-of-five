@@ -7,7 +7,7 @@ const bcrypt = require('bcrypt');
 const humps = require('humps');
 const jwt = require('jsonwebtoken');
 
-router.get('/:id', function(req, res, next) {
+router.get('/:id', verifyClassExists, function(req, res, next) {
   console.log(router);
   // ioFunction(req);
   res.render('classroom', {
@@ -15,47 +15,16 @@ router.get('/:id', function(req, res, next) {
   })
 });
 
-// function ioFunction(req) {
-//   let sessionObject = {
-//     happy: {
-//       value: 5,
-//       students: []
-//     },
-//     ya: {
-//       value: 4,
-//       students: []
-//     },
-//     meh: {
-//       value: 3,
-//       students: []
-//     },
-//     confused: {
-//       value: 2,
-//       students: []
-//     },
-//     angry: {
-//       value: 1,
-//       students: []
-//     }
-//   }
-//
-//   req.io.on('connection', function(socket) {
-//     socket.join(`classroom_${req.params.id}`, () =>{
-//       console.log("socket: ", socket.id, " has entered");
-//       console.log("the client is in", socket.rooms);
-//       socket.to(`classroom_${req.params.id}`).emit('message', `I am in the room ${req.params.id}`);
-//     });
-//
-//     socket.on('disconnect', () => {
-//       console.log("user disconnected");
-//     })
-//
-//     socket.on('mood', data => {
-//       sessionObject[data].students.push('student')
-//       req.io.emit('session object', sessionObject)
-//     })
-//   });
-// }
+function verifyClassExists(req, res, next) {
+  searchClass(req.params.id)
+    .then(data => {
+      if (data) {
+        next()
+      } else {
+        jwt.verify(req.cookies.token, 'shhh', (err, decoded) => res.redirect(`/dashboard/${decoded.id}`))
+      }
+    })
+}
 
-
+const searchClass = (id) => knex('classes').where('id', id).first()
 module.exports = router;
