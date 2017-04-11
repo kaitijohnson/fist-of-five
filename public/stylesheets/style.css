@@ -89,6 +89,19 @@ nav {
   margin-top: 0;
 }
 
+.inner-container-splash {
+  background-color: #659792;
+  padding: 30px;
+  margin: 0;
+  border: 0;
+  border-radius: 5px;
+}
+
+.no-pad {
+  padding-left: 0 !important;
+  padding-right: 0 !important;
+}
+
 .vertical-center {
   display: flex;
   flex-direction: column;
@@ -132,8 +145,10 @@ nav {
   height: 100px;
   /*width: 100% !important;*/
   font-size: 30px;
-  border-radius: 10px !important;
+  border-radius: 5px !important;
   padding: 0;
+  padding-left: 0 !important;
+  padding-right: 0 !important;
 }
 
 .inner-btn {
