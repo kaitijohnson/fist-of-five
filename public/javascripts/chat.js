@@ -6,6 +6,7 @@ $(() => {
   let infoEl = $('.INFORMATION')
   let isInstructor = infoEl.attr('data-is-instructor');
   let userId = infoEl.attr('data-id');
+  let hasInstructor = true;
 
   while (isNaN(parseInt(classId))) {
     urlArray.pop()
@@ -27,6 +28,10 @@ $(() => {
       mood: input.attr('data-value'),
       room: currentRoom
     })
+
+    // } else {
+    // Materialize.toast('Instructor has left no more voiting!', 4000)
+    // }
 
   })
   socket.on('session object', data => {
@@ -59,7 +64,18 @@ $(() => {
   socket.on('getUpToDate', () => {
     // socket.emit()
   })
+  socket.on('sendToast', () => {
+    Materialize.toast('Instructor has left no more voiting!', 4000)
+
+  })
+  socket.on('instructorUpdate', data => {
+    console.log(data);
+    console.log(hasInstructor);
+    console.log('made it here to instructorUpdate');
+    hasInstructor = data;
+  })
 })
+
 
 function averageRating(data) {
   // console.log(data);

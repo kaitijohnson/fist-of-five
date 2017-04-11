@@ -35,6 +35,10 @@ function initClass(bigObject, classroomName) {
       angry: {
         value: 1,
         students: []
+      },
+      instructor: {
+        name: '',
+        inClassroom: true
       }
     }
   }
@@ -49,69 +53,55 @@ function ioFunction(io) {
   let bigAssObject = {
 
   }
-  let sessionObject = {
-    happy: {
-      value: 5,
-      students: []
-    },
-    ya: {
-      value: 4,
-      students: []
-    },
-    meh: {
-      value: 3,
-      students: []
-    },
-    confused: {
-      value: 2,
-      students: []
-    },
-    angry: {
-      value: 1,
-      students: []
-    }
-  }
+
   io.on('connection', function(socket) {
     socket.emit('findRoom');
     // console.log("socket: ", socket.id, " has entered");
     // console.log("the client is in", socket.rooms);
     socket.on('disconnect', () => {
-      // console.log("user disconnected");
+      // console.log(socket.isInstructor);
+      if (socket.isInstructor == 'true') {
+        bigAssObject[socket.currentRoom].instructor.inClassroom = false
+        console.log(socket.currentRoom);
+      }
+      console.log("user disconnected");
+
     })
 
     socket.on('mood', data => {
-      // console.log("the data", data);
-      let classroom = bigAssObject[data.room]
-      for (var mood in classroom) {
-        for (var i = 0; i < classroom[mood].students.length; i++) {
-          if (classroom[mood].students[i] === socket.id) {
-            classroom[mood].students.splice(i, 1);
-            // console.log("students in ", mood, " ", classroom[mood].students);
+      if (bigAssObject[data.room].instructor.inClassroom) {
+        // console.log("the data", data);
+        let classroom = bigAssObject[data.room]
+        for (var mood in classroom) {
+          if (mood != 'instructor') {
+            for (var i = 0; i < classroom[mood].students.length; i++) {
+              if (classroom[mood].students[i] === socket.id) {
+                classroom[mood].students.splice(i, 1);
+                // console.log("students in ", mood, " ", classroom[mood].students);
+              }
+            }
           }
         }
+        bigAssObject[data.room][data.mood].students.push(socket.id)
+        io.to(data.room).emit('session object', bigAssObject[data.room])
+      } else {
+        io.to(data.room).emit('sendToast')
       }
-      bigAssObject[data.room][data.mood].students.push(socket.id)
-      io.to(data.room).emit('session object', bigAssObject[data.room])
     })
 
-    socket.on('joinRoom', data => {
-      initClass(bigAssObject, data);
-      // console.log(bigAssObject[data]);
-      // console.log('Request to join ', data);
-      socket.join(data, function() {
-        // console.log("the socket is in the following rooms", socket.rooms);
-      });
-    })
 
     socket.on('checkRoom', (data) => {
-      console.log('beginning of checkRoom --- keys:', Object.keys(bigAssObject));
+      // console.log('beginning of checkRoom --- keys:', Object.keys(bigAssObject));
       if (!bigAssObject.hasOwnProperty(data.currentRoom)) {
-        console.log('doesnt have property ---: isInstructor', typeof data.isInstructor);
+        // console.log('doesnt have property ---: isInstructor', typeof data.isInstructor);
         if (data.isInstructor == 'true') {
-          console.log('is instructor --- data:', data);
+          socket.currentRoom = data.currentRoom
+          socket.isInstructor = data.isInstructor;
+          // console.log('is instructor --- data:', data);
           initClass(bigAssObject, data.currentRoom);
           socket.join(data.currentRoom, function() {
-            console.log("the socket is in the following rooms", socket.rooms);
+            // console.log('YOUOYOUOYYOYOYUOYUOY');
+            // console.log("the socket is in the following rooms", socket.rooms);
             io.to(data.currentRoom).emit('session object', bigAssObject[data.currentRoom])
           });
         } else {
@@ -119,9 +109,14 @@ function ioFunction(io) {
         }
       } else {
         socket.join(data.currentRoom, function() {
+          if (data.isInstructor == 'true') {
+            socket.isInstructor = data.isInstructor;
+            socket.currentRoom = data.currentRoom
+            bigAssObject[data.currentRoom].instructor.inClassroom = true
+          }
           io.to(data.currentRoom).emit('session object', bigAssObject[data.currentRoom])
 
-          // console.log("the socket is in the following rooms", socket.rooms);
+          console.log("the socket is in the following rooms", socket.rooms);
 
         })
       }
