@@ -20,14 +20,14 @@ $(() => {
     e.preventDefault()
     let input = $(e.target)
     console.log(e.target);
-    socket.emit('mood', {mood:input.attr('data-value'),room:currentRoom})
+    socket.emit('mood', {mood:input.attr('data-value'), room:currentRoom})
   })
   socket.on('session object', data => {
-    $('#stoked').text(`${data.happy.students.length} voted stoked`)
-    $('#happy').text(`${data.ya.students.length} voted happy `)
-    $('#ok').text(`${data.meh.students.length} voted ok`)
-    $('#sad').text(`${data.confused.students.length} voted sad`)
-    $('#mad').text(`${data.angry.students.length} voted mad`)
+    $('#stoked').text(`${data.happy.students.length}`)
+    $('#happy').text(`${data.ya.students.length}`)
+    $('#ok').text(`${data.meh.students.length}`)
+    $('#sad').text(`${data.confused.students.length}`)
+    $('#mad').text(`${data.angry.students.length}`)
 
     //     ul.append(`<li>${data.happy.students.length} are happy, ${data.ya.students.length} are ya,${data.meh.students.length} are meh,${data.confused.students.length} are confused,${data.angry.students.length} are angry,
     // ${averageRating(data)}
