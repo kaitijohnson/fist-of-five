@@ -27,21 +27,22 @@ router.post('/', verifyClassName, function(req, res, next) {
   insertClass(req.body.className)
     .then((data) => {
       addtoUsersClasses(userId, data[0].id)
-      .then(classes => {
-        res.send({data:data[0]});
-      })
+        .then(classes => {
+          res.send({
+            data: data[0]
+          });
+        })
     })
 
 })
 
-router.delete('/:id', verifyClassExists,function(req,res,next){
+router.delete('/:id', verifyClassExists, function(req, res, next) {
   removeClass(req.params.id)
-    .then((data) =>{
-      if(data){
-        console.log('deletting table: ',data.id);
+    .then((data) => {
+      if (data) {
+        console.log('deletting table: ', data.id);
         res.send(true);
-      }
-      else{
+      } else {
         res.send(false);
       }
     })
@@ -85,6 +86,6 @@ const insertClass = (className) => knex('classes').returning('*').insert({
   'name': className
 });
 
-const removeClass = (id) => knex('classes').del().where('id',id);
+const removeClass = (id) => knex('classes').del().where('id', id);
 const searchClass = (id) => knex('classes').where('id', id).first()
 module.exports = router;
