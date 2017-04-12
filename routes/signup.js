@@ -21,7 +21,8 @@ router.post('/', validateSignup, validateEmail, hashPassword, (req, res, next) =
     lastName,
     email,
     hashed_password,
-    isInstructor
+    isInstructor,
+    profilePicUrl
   } = req.body
 
   insertUser(humps.decamelizeKeys({
@@ -29,7 +30,8 @@ router.post('/', validateSignup, validateEmail, hashPassword, (req, res, next) =
       lastName,
       email,
       hashed_password,
-      isInstructor
+      isInstructor,
+      profilePicUrl
     }))
     .then(insertHandlerCreateToken)
     .then(data => {
