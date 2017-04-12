@@ -15,6 +15,22 @@
     console.log("ID Token: " + id_token);
   };
 
+  const createAccount = (first, last, email, password) => $.ajax({
+    method: 'POST',
+    url: '/signup',
+    data: {
+      firstName: first,
+      lastName: last,
+      email: email,
+      password: password,
+      isInstructor: false,
+      isAJAX: true
+    },
+    success: (data) => {
+      window.location.replace(data);
+    }
+
+  })
   const sendGoogleInfo = (first, last, email, password) => $.ajax({
     method: 'POST',
     url: '/login',
@@ -26,7 +42,11 @@
       isGoogle: true
     },
     success: (data) => {
-      window.location.replace(data);
+      if (data === 'post') {
+        createAccount(first, last, email, password)
+      } else {
+        window.location.replace(data);
+      }
 
     }
   })

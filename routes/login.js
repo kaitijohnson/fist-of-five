@@ -16,6 +16,13 @@ router.post('/', validateLogin, validateEmail, (req, res, next) => {
 
 })
 
+// is google?
+// yes: check email, exists?
+// no: create user
+// yes: sign in
+// no: sign in
+
+//
 
 function validateLogin(req, res, next) {
   console.log('hehehehhehehehehwe made it');
@@ -53,10 +60,14 @@ function validateEmail(req, res, next) {
           }
         })
       } else {
-        res.render('splash', {
-          title: 'Login',
-          error: 'Bad Username or Password'
-        })
+        if (req.body.isGoogle) {
+          res.json('post')
+        } else {
+          res.render('splash', {
+            title: 'Login',
+            error: 'Bad Username or Password'
+          })
+        }
       }
     })
 }
