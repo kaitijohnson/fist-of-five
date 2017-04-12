@@ -18,6 +18,8 @@ router.post('/', validateLogin, validateEmail, (req, res, next) => {
 
 
 function validateLogin(req, res, next) {
+  console.log('hehehehhehehehehwe made it');
+  console.log(req.body);
   if (!req.body.email || !req.body.password) {
     next(boom.create(400, "Bad Username or Password"))
   }
@@ -25,6 +27,7 @@ function validateLogin(req, res, next) {
 }
 
 function validateEmail(req, res, next) {
+  console.log('we here?');
   getUserByEmail(req.body.email)
     .then(data => {
       console.log(data);
@@ -42,7 +45,11 @@ function validateEmail(req, res, next) {
             res.cookie('token', token, {
               httpOnly: true
             })
-            res.redirect(`dashboard/${data.id}`)
+            if (req.body.isGoogle) {
+              res.send(`dashboard/${data.id}`)
+            } else {
+              res.redirect(`dashboard/${data.id}`)
+            }
           }
         })
       } else {

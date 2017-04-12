@@ -42,13 +42,15 @@ function getClasses(req, res, next) {
 }
 
 function verifyToken(req, res, next) {
+  console.log(req.cookies.token);
   jwt.verify(req.cookies.token, 'shhh', function(err, decoded) {
     // console.log(Object.keys(decoded));
+    console.log(decoded);
     if (decoded.id == req.params.id) {
       next()
     } else {
       res.clearCookie('token')
-      // res.redirect(`/login`)
+      res.redirect(`/login`)
     }
 
   });

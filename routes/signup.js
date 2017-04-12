@@ -29,7 +29,7 @@ router.post('/', validateSignup, validateEmail, hashPassword, (req, res, next) =
       lastName,
       email,
       hashed_password,
-      isInstructor: true
+      isInstructor
     }))
     .then(insertHandlerCreateToken)
     .then(data => {
@@ -37,7 +37,11 @@ router.post('/', validateSignup, validateEmail, hashPassword, (req, res, next) =
       res.cookie('token', data[0], {
         httpOnly: true
       })
-      res.redirect(`dashboard/${data[1]}`)
+      if (req.body.isAJAX) {
+        res.send(`dashboard/${data[1]}`)
+      } else {
+        res.redirect(`/dashboard/${data[1]}`)
+      }
     })
     .catch(err => {
       console.log(err);
@@ -58,7 +62,8 @@ function insertHandlerCreateToken(data) {
 }
 
 function validateSignup(req, res, next) {
-  if (!req.body.password || !req.body.email || !req.body.firstName || !req.body.lastName) {
+  console.log(req.body);
+  if (!req.body.password || !req.body.email || !req.body.firstName || !req.body.lastName || !req.body.isInstructor) {
     next(boom.create(400, "Bad Username or Pass"))
   } else {
     next()
@@ -81,6 +86,7 @@ function validateEmail(req, res, next) {
 }
 
 function hashPassword(req, res, next) {
+  console.log('WE HERE');
   bcrypt.hash(req.body.password, 12)
     .then(data => {
       delete req.body.password
