@@ -1,7 +1,7 @@
 <head>
   <script type="text/javascript" src="/javascripts/dashboard.js">
-
   </script>
+  <link rel="stylesheet" href="/stylesheets/dashboard.css">
 </head>
 <body class="page">
     <div class="navbar-fixed">
@@ -22,12 +22,11 @@
           </span>
         </div>
         <span class="row col 10">
-        <button type="button" class="btn" name="button">New Class</button>
+        <button type="button" class="btn create-class" name="button">New Class</button>
         {{#each classes}}
           <div class="collection" data-id={{this.id}} >
             <span class="badge"><button class="remove_class" type="button" name="button"><i class="material-icons">delete</i></button></span>
             <a class="valign-wrapper collection-item z-depth-5" onclick="myFunction({{this.id}})"><i class="material-icons">people</i> {{this.name}}
-
             </a>
 
           </div>
