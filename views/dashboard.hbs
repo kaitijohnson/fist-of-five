@@ -1,3 +1,8 @@
+<head>
+  <script type="text/javascript" src="/javascripts/dashboard.js">
+
+  </script>
+</head>
 <body class="page">
     <div class="navbar-fixed">
         <nav>
@@ -18,9 +23,12 @@
         </div>
         <span class="row col 10">
         {{#each classes}}
-          <div class="collection" onclick="myFunction({{this.id}})">
-            <a class="valign-wrapper collection-item z-depth-5"><span class="badge"></span><i class="material-icons">people</i> {{this.name}}
+          <div class="collection" >
+            <span class="badge"><button class="remove_class" type="button" name="button"><i class="material-icons">delete</i></button></span>
+            <a class="valign-wrapper collection-item z-depth-5" onclick="myFunction({{this.id}})"><i class="material-icons">people</i> {{this.name}}
+
             </a>
+
           </div>
           {{/each}}
         </span>
