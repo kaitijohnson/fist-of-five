@@ -20,6 +20,20 @@ router.get('/:id', verifyClassExists, createTokenObject, function(req, res, next
   })
 });
 
+router.post('/', verifyClassName, function(req, res, next) {
+  let userId = req.body.id;
+  console.log("user id", req.body.id);
+  console.log("ClassName", req.body.className);
+  insertClass(req.body.className)
+    .then((data) => {
+      addtoUsersClasses(userId, data[0].id)
+      .then(classes => {
+        res.send({data:data[0]});
+      })
+    })
+
+})
+
 router.delete('/:id', verifyClassExists,function(req,res,next){
   removeClass(req.params.id)
     .then((data) =>{
@@ -32,6 +46,14 @@ router.delete('/:id', verifyClassExists,function(req,res,next){
       }
     })
 });
+
+function verifyClassName(req, res, next) {
+  if (!req.body.className || !req.body.className.trim()) {
+    next(boom.create(400, "no class name provided"));
+  } else {
+    next();
+  }
+}
 
 function createTokenObject(req, res, next) {
   jwt.verify(req.cookies.token, 'shhh', (err, decoded) => {
@@ -50,6 +72,18 @@ function verifyClassExists(req, res, next) {
       }
     })
 }
+
+const addtoUsersClasses = (userId, classID) => {
+  return knex('users_classes')
+    .returning('*')
+    .insert({
+      'class_id': classID,
+      'user_id': userId
+    });
+}
+const insertClass = (className) => knex('classes').returning('*').insert({
+  'name': className
+});
 
 const removeClass = (id) => knex('classes').del().where('id',id);
 const searchClass = (id) => knex('classes').where('id', id).first()

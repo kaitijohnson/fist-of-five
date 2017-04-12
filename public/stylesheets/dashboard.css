@@ -1,5 +1,11 @@
 .create-class{
-  margin: auto;
+  display: block;
+  margin: 0 auto;
+}
+
+.form-submission{
+  display: block;
+  margin: 0 auto;
 }
 
 .remove_button{

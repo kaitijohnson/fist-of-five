@@ -13,25 +13,26 @@ router.get('/:id', verifyToken, instructorBool, function(req, res, next) {
       // console.log(classes);
       res.render(`dashboard`, {
         title: `The individual user\'s dashboard ${req.params.id}`,
+        id: req.params.id,
         classes
       });
     })
 });
 
-router.post('/:id', verifyClassName, function(req, res, next) {
-  let userId = req.params.id;
-  // console.log("ClassName", req.body.className);
-  insertClass(req.body.className)
-    .then((data) => addtoUsersClasses(userId, data[0].id))
-    .then((userClassRow) => getAllClasses())
-    .then(classes => {
-      res.render('dashboard', {
-        title: `The individual user\'s dashboard ${req.params.id}`,
-        classes
-      });
-    })
-
-})
+// router.post('/', verifyClassName, function(req, res, next) {
+//   //let userId = req.params.id;
+//   console.log("ClassName", req.body.className);
+//   res.send(true)
+//   // insertClass(req.body.className)
+//   //   .then((data) => addtoUsersClasses(userId, data[0].id))
+//   //   .then((userClassRow) => getAllClasses())
+//   //   .then(classes => {
+//   //     res.render('dashboard', {
+//   //       title: `The individual user\'s dashboard ${req.params.id}`,
+//   //       classes
+//   //     });
+//   //   })
+// })
 
 function getClasses(req, res, next) {
   getUserClasses(req.params.id)
@@ -86,7 +87,5 @@ const insertClass = (className) => knex('classes').returning('*').insert({
 });
 const getUserClasses = (id) => knex('users').where('id', id)
 const getAllClasses = () => knex('classes')
-
-
 module.exports = router;
 ts = router;

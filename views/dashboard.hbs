@@ -4,6 +4,7 @@
   <link rel="stylesheet" href="/stylesheets/dashboard.css">
 </head>
 <body class="page">
+    <p id="user-id" hidden>{{id}}</p>
     <div class="navbar-fixed">
         <nav>
             <div class="nav-wrapper z-depth-5">
@@ -21,14 +22,22 @@
             <p class="valign-wrapper headline"><img class="responsive-image col l2 circle vertical-center" src="/images/charles-manson-mugshot.jpg"> {{title}}</p><br>
           </span>
         </div>
-        <span class="row col 10">
+        <span id="classes-container" class="row col 10">
+          <!-- ADDING CREATE CLASS FORM HERE-->
+          <div class="create-form-container" hidden>
+            <form>
+              <!-- //<label for="className"> Enter a class name</label> -->
+              <input type="text" id="class_name" name="class_name" placeholder="enter a class name" required >
+              <button type="submit" class="btn form-submission"name="button">Create Class</button>
+            </form>
+          </div>
         <button type="button" class="btn create-class" name="button">New Class</button>
+          <!-- ^^^^^^^^ ADD CLASS BUTTON HERE ^^^^^^ --->
         {{#each classes}}
           <div class="collection" data-id={{this.id}} >
             <span class="badge"><button class="remove_class" type="button" name="button"><i class="material-icons">delete</i></button></span>
             <a class="valign-wrapper collection-item z-depth-5" onclick="myFunction({{this.id}})"><i class="material-icons">people</i> {{this.name}}
             </a>
-
           </div>
           {{/each}}
         </span>
