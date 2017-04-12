@@ -8,7 +8,7 @@ const jwt = require('jsonwebtoken');
 
 router.get('/', function(req, res, next) {
   res.render('login', {
-    title: 'The Login Page'
+    title: 'User Login'
   });
 });
 

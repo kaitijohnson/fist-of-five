@@ -8,7 +8,7 @@ const jwt = require('jsonwebtoken');
 
 router.get('/', function(req, res, next) {
   res.render('signup', {
-    title: 'The Signup Page'
+    title: 'Create an Account'
   });
 });
 
