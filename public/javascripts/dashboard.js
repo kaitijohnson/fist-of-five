@@ -9,13 +9,9 @@ $(() =>{
       datatype: 'json',
       success: (data) =>{
         console.log('I pretty much removed this class')
-        $(e.target).closest('.collection').hide('slow', (target)=>{
-          console.log(target)
-        })
+        $(e.target).closest('.collection').hide('fast')
       }
 
     })
-    //$(e.target).closest('.collection').remove();
-    // console.log($(e.target).closest());
   })
 })
