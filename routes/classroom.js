@@ -20,6 +20,19 @@ router.get('/:id', verifyClassExists, createTokenObject, function(req, res, next
   })
 });
 
+router.delete('/:id', verifyClassExists,function(req,res,next){
+  searchClass(req.params.id)
+    .then((data) =>{
+      if(data){
+        console.log('deletting table: ',data.id);
+        res.send(true);
+      }
+      else{
+        res.send(false);
+      }
+    })
+});
+
 function createTokenObject(req, res, next) {
   jwt.verify(req.cookies.token, 'shhh', (err, decoded) => {
     res.locals.token = decoded

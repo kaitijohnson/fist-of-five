@@ -23,7 +23,7 @@
         </div>
         <span class="row col 10">
         {{#each classes}}
-          <div class="collection" >
+          <div class="collection" data-id={{this.id}} >
             <span class="badge"><button class="remove_class" type="button" name="button"><i class="material-icons">delete</i></button></span>
             <a class="valign-wrapper collection-item z-depth-5" onclick="myFunction({{this.id}})"><i class="material-icons">people</i> {{this.name}}
 
