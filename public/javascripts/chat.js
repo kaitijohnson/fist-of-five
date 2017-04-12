@@ -65,7 +65,7 @@ $(() => {
     ul.prepend(`<li>${data}</li>`)
   })
   socket.on('toDashboard', () => {
-    window.location.replace(`../../dashboard/${userId}`)
+    window.location.replace(`../../noclass`)
   })
   socket.on('getUpToDate', () => {
     // socket.emit()

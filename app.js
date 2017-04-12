@@ -12,6 +12,9 @@ const login = require('./routes/login');
 const signup = require('./routes/signup');
 const dashboard = require('./routes/dashboard');
 const classroom = require('./routes/classroom');
+const noclass = require('./routes/noclass');
+
+
 
 function initClass(bigObject, classroomName) {
   if (!bigObject.hasOwnProperty(classroomName)) {
@@ -154,6 +157,7 @@ app.use('/login', login);
 app.use('/signup', signup);
 app.use('/dashboard', dashboard);
 app.use('/classroom', classroom);
+app.use('/noclass', noclass);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
