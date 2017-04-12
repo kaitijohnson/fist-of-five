@@ -118,7 +118,7 @@ i {
   margin: auto;
   margin-left: 0px;
   padding: 2px;
-  bottom: 0px;
+  bottom: 3px;
   background-color: rgb(219, 133, 63);
 }
 .comment {
@@ -263,13 +263,13 @@ i {
   opacity: 1;
 }
 
-.fb-post {
+/*.fb-post {
   width: 100%;
   background: #fff;
   height: 410px;
   background: url(https://i.imgsafe.org/aea1fb1.png) no-repeat;
   background-size: cover;
-}
+}*/
 
 .instructions {
   font-size: 14px;
@@ -281,7 +281,7 @@ i {
   top: -9px;
 }
 
-.rating {
+#saveForm {
   vertical-align: middle;
   margin: auto;
 }
