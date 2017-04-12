@@ -21,7 +21,7 @@ router.get('/:id', verifyClassExists, createTokenObject, function(req, res, next
 });
 
 router.delete('/:id', verifyClassExists,function(req,res,next){
-  searchClass(req.params.id)
+  removeClass(req.params.id)
     .then((data) =>{
       if(data){
         console.log('deletting table: ',data.id);
@@ -51,5 +51,6 @@ function verifyClassExists(req, res, next) {
     })
 }
 
+const removeClass = (id) => knex('classes').del().where('id',id);
 const searchClass = (id) => knex('classes').where('id', id).first()
 module.exports = router;

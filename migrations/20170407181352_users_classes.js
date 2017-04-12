@@ -8,6 +8,7 @@ exports.up = function(knex, Promise) {
       table.integer('class_id')
         .references('classes.id')
         .notNullable()
+        .onDelete('cascade')
     })
   ])
 
