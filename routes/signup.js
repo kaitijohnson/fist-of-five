@@ -15,7 +15,7 @@ router.get('/', function(req, res, next) {
 
 router.post('/', validateSignup, validateEmail, hashPassword, (req, res, next) => {
   console.log(req.body);
-
+  console.log(req.body.isInstructor);
   let {
     firstName,
     lastName,
