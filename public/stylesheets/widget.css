@@ -285,3 +285,63 @@ i {
   vertical-align: middle;
   margin: auto;
 }
+
+.splash {
+    /*padding: 50px;*/
+    font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+    height: 100%;
+    background-color: #2b3a45 !important;
+    /*background-size: 100%;*/
+    margin-top: 0;
+    position: relative;
+}
+
+.container-splash {
+  /*background:rgba(222,222,222,.8);*/
+  position: relative;
+  overflow-y: scroll;
+  height: 100%;
+  padding-top: 0;
+  margin-top: 0;
+}
+
+.inner-container-splash {
+  background-color: #659792;
+  padding: 30px;
+  margin: 0;
+  border: 0;
+  border-radius: 5px;
+}
+
+.logo-splash {
+    max-width: 100% !important;
+    height: auto;
+}
+
+.no-pad {
+  padding-left: 0 !important;
+  padding-right: 0 !important;
+}
+
+.card-btn {
+  background-color: #659792 !important;
+  /*height: 100px;*/
+  /*width: 100% !important;*/
+  /*font-size: 30px;*/
+  border-radius: 5px !important;
+  padding: 0;
+  padding-left: 0 !important;
+  padding-right: 0 !important;
+}
+.headline2 {
+    font-family: 'Architects Daughter' !important;
+    font-size: 30px;
+    color: white;
+}
+
+.center-child {
+  position: absolute;
+  top: 50%;
+  height: 100px;
+  margin-top: -100px; /* account for padding and border if not using box-sizing: border-box; */
+}
