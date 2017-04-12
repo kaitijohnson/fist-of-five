@@ -13,10 +13,16 @@
   <div class="inner-container">
     <span class="row">
     <p class="center headline">{{title}}</p><br>
-    <p>ERROR: {{error}}</p>
+    <!-- <p>ERROR: {{error}}</p> -->
   </span>
     <span class="row">
     <form class="col s12 row" method="post">
+      <p>
+  <input name="isInstructor" class="with-gap" type="radio" id="instructor"/>
+  <label for="instructor">Instructor</label>
+  <input name="isInstructor" class="with-gap" type="radio" id="student"/>
+  <label for="student">Student</label>
+</p>
             <div class="input-field col s12 m5 l5">
                 <input value="Lee Sah" id="first_name" type="text" class="validate" name="firstName">
                 <label for="first_name">First Name</label>
