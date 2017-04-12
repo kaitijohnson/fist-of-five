@@ -20,7 +20,8 @@ router.post('/', validateSignup, validateEmail, hashPassword, (req, res, next) =
     firstName,
     lastName,
     email,
-    hashed_password
+    hashed_password,
+    isInstructor
   } = req.body
 
   insertUser(humps.decamelizeKeys({
