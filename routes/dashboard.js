@@ -8,12 +8,14 @@ const jwt = require('jsonwebtoken');
 
 router.get('/:id', verifyToken, instructorBool, function(req, res, next) {
   // console.log('hasdhfkasdhfjk');
-  getAllClasses()
-    .then(classes => {
-      // console.log(classes);
+  Promise.all([getAllClasses(), getUser(req.params.id)])
+    .then(results => {
+      let [classes, user] = results
+      console.log(user);
       res.render(`dashboard`, {
-        title: `The individual user\'s dashboard ${req.params.id}`,
+        title: `Welcome, ${user.first_name}`,
         id: req.params.id,
+        user,
         classes
       });
     })
@@ -90,7 +92,7 @@ const addtoUsersClasses = (userId, classID) => {
 const insertClass = (className) => knex('classes').returning('*').insert({
   'name': className
 });
-const getUserClasses = (id) => knex('users').where('id', id)
+const getUser = (id) => knex('users').where('id', id).first()
 const getAllClasses = () => knex('classes')
 module.exports = router;
 ts = router;

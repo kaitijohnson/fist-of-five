@@ -1,16 +1,33 @@
-.create-class{
-  display: block;
-  margin: 0 auto;
+.create-class {
+    display: block;
+    margin: 0 auto;
 }
 
-.form-submission{
-  display: block;
-  margin: 0 auto;
+.form-submission {
+    display: block;
+    margin: 0 auto;
 }
 
-.remove_button{
-  margin-left: 0px !important;
-  margin-right: 0px !important;
-  margin-bottom: 0px !important;
-  margin-top: 10px !important;
+.remove_button {
+    margin-left: 0px !important;
+    margin-right: 0px !important;
+    margin-bottom: 0px !important;
+    margin-top: 10px !important;
+}
+
+img.responsive-image.circle {
+    margin: 0 15px;
+    width: 100px;
+}
+
+.inner-container.z-depth-5 {
+    margin-bottom: 10px;
+}
+
+button.btn.create-class {
+    margin-bottom: 20px;
+}
+
+p.valign-wrapper.headline2 {
+    font-size: 50px;
 }
