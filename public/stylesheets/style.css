@@ -58,14 +58,6 @@ nav {
   padding-right: 0;
 }
 
-.class-btn {
-  font-size: 25px;
-  display: inline-flex;
-  vertical-align: middle;
-  padding-top: 0 !important;
-  padding-bottom: 0 !important;
-}
-
 .container {
   /*background: rgba(222,222,222,0.8);*/
   position: relative;
@@ -145,12 +137,12 @@ nav {
   padding-right: 20px;
 }
 
-.btn {
-  background-color: #659792 !important;
-}
-
 .card-panel {
   padding: 0 !important;
+}
+
+.btn {
+  background-color: #659792 !important;
 }
 
 .card-btn {
@@ -180,6 +172,14 @@ nav {
   /*padding: 20px;
   margin: 20px;
   border: 20px;*/
+}
+
+.class-btn {
+  font-size: 20px;
+  display: inline-flex;
+  vertical-align: middle;
+  padding-top: 0 !important;
+  padding-bottom: 0 !important;
 }
 
 .brand-logo {
