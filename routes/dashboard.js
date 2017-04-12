@@ -19,6 +19,11 @@ router.get('/:id', verifyToken, instructorBool, function(req, res, next) {
     })
 });
 
+router.delete('/', (req, res, next) => {
+  res.clearCookie('token')
+  res.sendStatus(200)
+})
+
 // router.post('/', verifyClassName, function(req, res, next) {
 //   //let userId = req.params.id;
 //   console.log("ClassName", req.body.className);
