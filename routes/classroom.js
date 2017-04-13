@@ -59,6 +59,15 @@ function verifyClassName(req, res, next) {
 function createTokenObject(req, res, next) {
   jwt.verify(req.cookies.token, 'shhh', (err, decoded) => {
     res.locals.token = decoded
+    if (err) {
+      givenId = Math.floor(Math.random() * 100000)
+      res.locals.token = {
+        isInstructor: false,
+        firstName: 'guest',
+        lastName: 'guest',
+        id: `guest${givenId}`
+      }
+    }
     next()
   })
 }
