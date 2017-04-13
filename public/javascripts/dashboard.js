@@ -58,7 +58,8 @@ $(() => {
   function addClassLink(classData) {
     console.log("class data", classData);
     console.log("class id ", classData.id);
-    let classLink = $('<div class="collection"></div>c').html(`<span class="badge"><button class="remove_class" type="button" name="button"><i class="material-icons">delete</i></button></span><a class="valign-wrapper collection-item z-depth-5" onclick="myFunction(${classData.id})"><i class="material-icons">people</i> ${classData.name}</a>`);
+    let classLink = $('<div class="collection"></div>c').html(`<span class="badge"><button class="remove_class class-btn" type="button" name="button"><i class="material-icons tiny class-btn">close</i></button></span>
+    <a class="collection-item class-btn z-depth-5" onclick="myFunction(${classData.id})"><i class="material-icons medium class-btn">people</i> ${classData.name}</a>`);
     classLink.attr('data-id', classData.id)
     console.log(classLink);
 
@@ -109,8 +110,7 @@ const logoutUser = () => $.ajax({
 })
 /*
 <div class="collection" data-id={{this.id}} >
-  <span class="badge"><button class="remove_class" type="button" name="button"><i class="material-icons">delete</i></button></span>
-  <a class="valign-wrapper collection-item z-depth-5" onclick="myFunction({{this.id}})"><i class="material-icons">people</i> {{this.name}}
-  </a>
+  <span class="badge"><button class="remove_class class-btn" type="button" name="button"><i class="material-icons tiny class-btn">close</i></button></span>
+  <a class="collection-item class-btn z-depth-5" onclick="myFunction(${classData.id})"><i class="material-icons medium class-btn">people</i> ${classData.name}</a>
 </div>
 */
