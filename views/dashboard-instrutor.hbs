@@ -1,0 +1,59 @@
+<head>
+  <script type="text/javascript" src="/javascripts/dashboard.js">
+  </script>
+  <link rel="stylesheet" href="/stylesheets/dashboard.css">
+</head>
+<body class="page">
+
+  <p id="user-id" hidden>{{id}}</p>
+    <p id="user-user" hidden>{{user}}</p>
+
+    <div class="navbar-fixed">
+        <nav>
+            <div class="nav-wrapper z-depth-5">
+                <a href="../" class="brand-logo"><img src="/images/logo.png" height="35px"></a>
+                <ul class="right hide-on-med-and-down">
+                    <li><a id="logoutButton" href="../">Logout</a></li>
+                </ul>
+            </div>
+        </nav>
+    </div>
+    <div class="container z-depth-5">
+      <div class="dash">
+        <div class="inner-container z-depth-5">
+          <span class="row">
+            <p class="valign-wrapper headline2"><img class="responsive-image circle" src="{{user.profile_pic_url}}"> {{title}}</p><br>
+            {{if user.isInstructor}}
+              <p>instructor</p>
+            {{else}}
+              <p>student</p>
+            {{/if}}
+          </span>
+        </div>
+        <span id="classes-container" class="row col 10">
+          <!-- ADDING CREATE CLASS FORM HERE-->
+          <div class="create-form-container" hidden>
+            <form>
+              <!-- //<label for="className"> Enter a class name</label> -->
+              <input type="text" id="class_name" name="class_name" placeholder="enter a class name" required >
+              <button type="submit" class="btn form-submission"name="button">Create Class</button>
+            </form>
+          </div>
+        <button type="button" class="btn create-class" name="button">New Class</button>
+          <!-- ^^^^^^^^ ADD CLASS BUTTON HERE ^^^^^^ --->
+        {{#each classes}}
+          <div class="collection" data-id={{this.id}} >
+            <span class="badge"><button class="remove_class class-btn" type="button" name="button"><i class="material-icons tiny class-btn">close</i></button></span>
+            <a class="collection-item class-btn z-depth-5" onclick="myFunction({{this.id}})"><i class="material-icons medium class-btn">people</i> {{this.name}}
+            </a>
+          </div>
+          {{/each}}
+        </span>
+      </div>
+    </div>
+    <script>
+    function myFunction(id) {
+        window.open("../../classroom/" + id, "_blank",  "directories=no,toolbar=no,scrollbars=no,resizable=no,location=no,status=no,top=10,left=10,width=156,height=440");
+    }
+    </script>
+</body>
