@@ -22,11 +22,11 @@
       <div class="dash">
         <div class="inner-container z-depth-5">
           <span class="row">
-            <p class="valign-wrapper headline2"><img class="responsive-image circle" src="{{user.profile_pic_url}}"> {{title}}</p><br>
+            <p class="valign-wrapper headline2"><img class="responsive-image circle" src="{{user.profile_pic_url}}"> {{title}}</p>
             {{#if user.is_instructor}}
-              <p>instructor</p>
+              <p class="valign-wrapper headline2">instructor</p>
             {{else}}
-              <p>student</p>
+              <p class="valign-wrapper headline5">student</p>
             {{/if}}
           </span>
         </div>
