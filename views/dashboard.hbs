@@ -30,20 +30,9 @@
             {{/if}}
           </span>
         </div>
-        <span id="classes-container" class="row col 10">
-          <!-- ADDING CREATE CLASS FORM HERE-->
-          <div class="create-form-container" hidden>
-            <form>
-              <!-- //<label for="className"> Enter a class name</label> -->
-              <input type="text" id="class_name" name="class_name" placeholder="enter a class name" required >
-              <button type="submit" class="btn form-submission"name="button">Create Class</button>
-            </form>
-          </div>
-        <button type="button" class="btn create-class" name="button">New Class</button>
-          <!-- ^^^^^^^^ ADD CLASS BUTTON HERE ^^^^^^ --->
         {{#each classes}}
           <div class="collection" data-id={{this.id}} >
-            <span class="badge"><button class="remove_class class-btn" type="button" name="button"><i class="material-icons tiny class-btn">close</i></button></span>
+            <span class="badge"></span>
             <a class="collection-item class-btn z-depth-5" onclick="myFunction({{this.id}})"><i class="material-icons medium class-btn">people</i> {{this.name}}
             </a>
           </div>

@@ -11,13 +11,24 @@ router.get('/:id', verifyToken, instructorBool, function(req, res, next) {
   Promise.all([getAllClasses(), getUser(req.params.id)])
     .then(results => {
       let [classes, user] = results
-      console.log(user);
-      res.render(`dashboard`, {
-        title: `Welcome, ${user.first_name}`,
-        id: req.params.id,
-        user,
-        classes
-      });
+      //console.log(user);
+      if(user.is_instructor) {
+        console.log('instructor');
+        res.render(`dashboard-instrutor`, {
+          title: `Welcome, ${user.first_name}`,
+          id: req.params.id,
+          user,
+          classes
+        });
+      }
+      else {
+        res.render(`dashboard`, {
+          title: `Welcome, ${user.first_name}`,
+          id: req.params.id,
+          user,
+          classes
+        });
+      }
     })
 });
 

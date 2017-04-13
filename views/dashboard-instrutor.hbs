@@ -23,7 +23,7 @@
         <div class="inner-container z-depth-5">
           <span class="row">
             <p class="valign-wrapper headline2"><img class="responsive-image circle" src="{{user.profile_pic_url}}"> {{title}}</p><br>
-            {{if user.isInstructor}}
+            {{#if user.isInstructor}}
               <p>instructor</p>
             {{else}}
               <p>student</p>
