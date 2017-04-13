@@ -13,7 +13,7 @@ exports.up = function(knex, Promise) {
         .unique();
       table.string('profile_pic_url')
         .notNullable()
-        .defaultTo('/images/ericAndre.jpg')
+        .defaultTo('/images/neil.jpg')
       table.boolean('is_instructor')
         .notNullable()
       table.timestamps(true, true)
