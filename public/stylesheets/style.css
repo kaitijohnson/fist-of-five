@@ -131,6 +131,11 @@ nav {
     color: rgb(219, 133, 63);
 }
 
+.dkblue-text {
+  text-decoration-color: #303e47;
+  font-size: 16px;
+}
+
 .dash {
   padding-top: 30px;
   padding-left: 20px;
