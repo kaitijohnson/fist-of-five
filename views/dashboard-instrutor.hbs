@@ -31,10 +31,10 @@
             <form>
               <!-- //<label for="className"> Enter a class name</label> -->
               <input type="text" id="class_name" name="class_name" placeholder="enter a class name" required >
-              <button type="submit" class="btn form-submission"name="button">Create Class</button>
+              <button type="submit" class="btn form-submission"name="button"><label>Create Class</label></button>
             </form>
           </div>
-        <button type="button" class="btn create-class" name="button">New Class</button>
+        <button type="button" class="btn create-class" name="button"><label>New Class</label></button>
           <!-- ^^^^^^^^ ADD CLASS BUTTON HERE ^^^^^^ --->
         {{#each classes}}
           <div class="collection" data-id={{this.id}} >
