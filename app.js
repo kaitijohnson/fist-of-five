@@ -53,7 +53,7 @@ ioFunction(io);
 
 function ioFunction(io) {
 
-  let bigAssObject = {
+  let classesObject = {
 
   }
 
@@ -64,7 +64,7 @@ function ioFunction(io) {
     socket.on('disconnect', () => {
       // console.log(socket.isInstructor);
       if (socket.isInstructor == 'true') {
-        bigAssObject[socket.currentRoom].instructor.inClassroom = false
+        classesObject[socket.currentRoom].instructor.inClassroom = false
         console.log(socket.currentRoom);
       }
       console.log("user disconnected");
@@ -72,11 +72,11 @@ function ioFunction(io) {
     })
 
     socket.on('mood', data => {
-      console.log('---------------------', bigAssObject[data.room]);
+      console.log('---------------------', classesObject[data.room]);
       let userObject = createUserObject(data)
-      if (bigAssObject[data.room].instructor.inClassroom) {
+      if (classesObject[data.room].instructor.inClassroom) {
         // console.log("the data", data);
-        let classroom = bigAssObject[data.room]
+        let classroom = classesObject[data.room]
         for (var mood in classroom) {
           if (mood != 'instructor') {
             for (var i = 0; i < classroom[mood].students.length; i++) {
@@ -87,8 +87,8 @@ function ioFunction(io) {
             }
           }
         }
-        bigAssObject[data.room][data.mood].students.push(userObject)
-        io.to(data.room).emit('session object', bigAssObject[data.room])
+        classesObject[data.room][data.mood].students.push(userObject)
+        io.to(data.room).emit('session object', classesObject[data.room])
       } else {
         io.to(data.room).emit('sendToast')
       }
@@ -96,18 +96,18 @@ function ioFunction(io) {
 
 
     socket.on('checkRoom', (data) => {
-      // console.log('beginning of checkRoom --- keys:', Object.keys(bigAssObject));
-      if (!bigAssObject.hasOwnProperty(data.currentRoom)) {
+      // console.log('beginning of checkRoom --- keys:', Object.keys(classesObject));
+      if (!classesObject.hasOwnProperty(data.currentRoom)) {
         // console.log('doesnt have property ---: isInstructor', typeof data.isInstructor);
         if (data.isInstructor == 'true') {
           socket.currentRoom = data.currentRoom
           socket.isInstructor = data.isInstructor;
           // console.log('is instructor --- data:', data);
-          initClass(bigAssObject, data.currentRoom);
+          initClass(classesObject, data.currentRoom);
           socket.join(data.currentRoom, function() {
             // console.log('YOUOYOUOYYOYOYUOYUOY');
             // console.log("the socket is in the following rooms", socket.rooms);
-            io.to(data.currentRoom).emit('session object', bigAssObject[data.currentRoom])
+            io.to(data.currentRoom).emit('session object', classesObject[data.currentRoom])
           });
         } else {
           socket.emit('toDashboard')
@@ -117,9 +117,9 @@ function ioFunction(io) {
           if (data.isInstructor == 'true') {
             socket.isInstructor = data.isInstructor;
             socket.currentRoom = data.currentRoom
-            bigAssObject[data.currentRoom].instructor.inClassroom = true
+            classesObject[data.currentRoom].instructor.inClassroom = true
           }
-          io.to(data.currentRoom).emit('session object', bigAssObject[data.currentRoom])
+          io.to(data.currentRoom).emit('session object', classesObject[data.currentRoom])
 
           console.log("the socket is in the following rooms", socket.rooms);
 
